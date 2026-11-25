@@ -1,4 +1,4 @@
-# [Nome do projeto]
+# [Ouvidoria do Campus]
 
 [English](README.md) · **Português (Brasil)**
 
@@ -13,12 +13,12 @@ No primeiro dia, adicionem o professor como colaborador do repositório, com o e
 ## Equipe
 
 - **Turma:** TDS — turmas mistas 6570, 6756 e 6863
-- **Tech Lead:**
-- **Responsável pela apresentação:**
+- **Tech Lead:** Vinicius Esteves
+- **Responsável pela apresentação:** Ana Júlia Pontes
 - **Integrantes:**
-  - Ana Julia — GitHub
-  - Vinicius Esteves — GitHub
-  - Thomas — GitHub
+  - Ana Julia — anajpontes
+  - Vinicius Esteves — akiyx45
+  - Thomas — thomasmchaves-ctrl
 
 ## Tema / área
 
