@@ -1,4 +1,4 @@
-# [Proje]
+# [Ouvidoria do Campus]
 
 **English** · [Português (Brasil)](README.pt-BR.md)
 
