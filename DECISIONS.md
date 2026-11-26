@@ -21,12 +21,24 @@ Copy the template below whenever you need a new entry.
 
 ## 23/11/2026 — Back-end stack choice (example)
 
-- **Decision:** use Node.js with Express on the back-end.
+- **Decision:** use Java with Spring on the back-end.
 - **Alternatives considered:** Java with Spring Boot; Python with FastAPI.
 - **Rationale:** the team is already more familiar with JavaScript, and a one-week deadline favors a stack everyone can contribute to from day one.
 
-## [date] — [decision title]
+## 24/11/26 — MVP scope
 
-- **Decision:**
-- **Alternatives considered:**
-- **Rationale:**
+- **Decision:** create a system where users can open tickets with text, a photo, and the campus location.
+- **Alternatives considered:** disallow audio, files (except PNG and MP4), and links.
+- **Rationale:** this scope meets the briefing's minimum requirements and can be developed within the available time. The team chose text, photos, and campus location as the most effective way to report a problem.
+
+## 26/11/2026 — Private email-based tracking
+
+- **Decision:** A complainant may optionally provide an email address to receive a reference code and track the complaint. To view the complaint through the lookup screen, they must confirm a code sent to that address. The email will be used only for tracking and will not be visible or accessible to the campus secretary.
+- **Alternatives considered:** Do not offer email-based tracking, or allow lookup without verifying a code sent to the provided address.
+- **Rationale:** This allows complainants to track a report without requiring them to identify themselves to the secretary. People who do not provide an email can submit a report without sharing that personal data.
+
+## 26/11/2026 — Initial frontend delivery
+
+- **Decision:** First build the responsive report-submission screen with HTML and CSS. Keep submission disabled until a real API exists; implement the secretary login and code-based lookup/verification in later steps.
+- **Alternatives considered:** Build every screen and simulate integration before the back-end endpoints are available.
+- **Rationale:** Avoid inventing APIs or presenting a simulated submission as functional, and keep development in small steps.

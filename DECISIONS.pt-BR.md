@@ -21,12 +21,24 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 
 ## 23/11/2026 — Escolha da stack de back-end (exemplo)
 
-- **Decisão:** usar Node.js com Express no back-end.
+- **Decisão:** usar Java com Spring no back-end.
 - **Alternativas consideradas:** Java com Spring Boot; Python com FastAPI.
 - **Motivo:** o time já tem mais familiaridade com JavaScript, e o prazo de uma semana favorece uma stack na qual todos conseguem contribuir desde o primeiro dia.
 
-## [data] — [título da decisão]
+## [24/11/26] — Escopo do MVP
 
-- **Decisão:**
-- **Alternativas consideradas:**
-- **Motivo:**
+- **Decisão:** Decidimos criar um sistema onde o usuário podera abrir chamados com texto, foto, e local do campus.
+- **Alternativas consideradas:** Consideramos que não podera mandar audios, arquivos (exceto PNG, MP4) e links.
+- **Motivo:** O escopo atende aos requisitos mínimos do briefing e pode ser desenvolvido dentro do prazo. Além disso, decidimos mandar somente texto, foto e local do campus, pois é a maneira mais eficaz de relatar um problema.
+
+## 26/11/2026 — Acompanhamento privado por e-mail
+
+- **Decisão:** O reclamante pode informar um e-mail opcional para receber o protocolo e acompanhar a reclamação. Para consultar a reclamação pela tela, será necessário confirmar um código enviado para esse e-mail. O e-mail será usado somente para acompanhamento e não ficará visível nem acessível à secretaria.
+- **Alternativas consideradas:** Não oferecer acompanhamento por e-mail ou permitir a consulta sem validar um código enviado ao endereço informado.
+- **Motivo:** Permitir o acompanhamento do chamado sem exigir que o reclamante se identifique perante a secretaria. Quem não informar e-mail poderá enviar o relato sem fornecer esse dado pessoal.
+
+## 26/11/2026 — Entrega inicial do frontend
+
+- **Decisão:** Desenvolver primeiro a tela responsiva de abertura de relato em HTML e CSS. Manter o envio desabilitado até existir uma API real; implementar login da secretaria e consulta/validação por código em etapas posteriores.
+- **Alternativas consideradas:** Criar todas as telas e simular uma integração antes de o backend disponibilizar os endpoints.
+- **Motivo:** Evitar inventar APIs ou apresentar um envio simulado como funcional e manter o desenvolvimento em etapas pequenas.
