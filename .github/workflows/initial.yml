@@ -1,0 +1,16 @@
+name: Initial Workflow
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  initial:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Display success message
+      run: echo "GitHub Actions funcionando corretamente!"
