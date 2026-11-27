@@ -65,8 +65,10 @@ Descrevam a organização do repositório. Ajustem o exemplo abaixo à escolha d
 
 ### Back-end
 
-Copie `backend/.env.example` para `backend/.env` e preencha `SUPABASE_DB_PASSWORD`
-no arquivo local. O `.env` é ignorado pelo Git; não o faça commit nem o compartilhe.
+Copie `backend/.env.example` para `backend/.env` e preencha `SUPABASE_DB_PASSWORD` e
+`FOLLOW_UP_EMAIL_ENCRYPTION_KEY` no arquivo local. A chave de criptografia deve estar
+em Base64 e decodificar para 32 bytes. Mantenha a mesma chave para acessar e-mails já
+cifrados. O `.env` é ignorado pelo Git; não o faça commit nem o compartilhe.
 
 ```powershell
 cd backend

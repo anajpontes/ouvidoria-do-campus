@@ -65,8 +65,10 @@ Describe how the repository is organized. Adjust the example below to the team's
 
 ### Back-end
 
-Copy `backend/.env.example` to `backend/.env` and set `SUPABASE_DB_PASSWORD` in the
-local `.env` file. The `.env` file is ignored by Git; do not commit or share it.
+Copy `backend/.env.example` to `backend/.env` and set both `SUPABASE_DB_PASSWORD` and
+`FOLLOW_UP_EMAIL_ENCRYPTION_KEY` in the local `.env` file. The encryption key must be
+Base64-encoded and decode to 32 bytes. Keep the same key for existing encrypted email data.
+The `.env` file is ignored by Git; do not commit or share it.
 
 ```powershell
 cd backend

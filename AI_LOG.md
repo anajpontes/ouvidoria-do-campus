@@ -41,3 +41,10 @@ Copy the template below whenever you need a new entry.
 - **What the AI generated:** PostgreSQL datasource configuration using environment variables, dependency changes and aligned documentation updates.
 - **What the team kept:** the Supabase PostgreSQL configuration and documentation of the approved decision.
 - **What the team corrected or rejected, and why:** no GitHub repository was linked because it is not owned by the database administrator; credentials were kept out of the repository.
+
+### 27/11/2026 — Public report API and private email storage
+
+- **Main prompt:** Continue the backend so it can accept reports locally and later align with the teammate's Supabase database without exposing the complainant's email.
+- **What the AI generated:** A JSON submission endpoint, UUID protocol generation, JPA mapping aligned with the current schema proposal, AES-GCM email encryption using an environment key, and tests/documentation.
+- **What the team kept:** The `POST /api/chamados` route, UUID protocol, required email stored separately with AES-GCM, and a response that omits the email. The application's database is integrated with Supabase PostgreSQL; tests use isolated H2.
+- **What the team corrected or rejected, and why:** The initial SQLite configuration was replaced with Supabase per the team's decision. Email-code delivery, staff endpoints, photo upload, and real AI classification remain deferred because their providers/policies or authentication are not yet approved. Real credentials were not added to the repository.
