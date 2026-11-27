@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7f4">
+  <meta name="description" content="Relate problemas de infraestrutura do campus à Ouvidoria do Campus.">
+  <title>Ouvidoria do Campus | Novo relato</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="Ouvidoria do Campus, início">
+      <span class="brand-mark" aria-hidden="true">O</span>
+      <span>Ouvidoria <strong>do Campus</strong></span>
+    </a>
+    <span class="header-label">Infraestrutura e espaços</span>
+  </header>
+
+  <main id="inicio">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow"><span aria-hidden="true"></span> Cuidado com o nosso espaço</p>
+      <h1 id="page-title">Viu algo que precisa<br class="desktop-break"> de atenção?</h1>
+      <p class="intro-copy">Conte para a gente. Seu relato ajuda a equipe do campus a entender e encaminhar o que precisa ser cuidado.</p>
+      <div class="response-note">
+        <span class="note-icon" aria-hidden="true">i</span>
+        <p>Este canal é para problemas de infraestrutura do campus. A equipe responsável recebe os relatos e acompanha cada solicitação.</p>
+      </div>
+    </section>
+
+    <section class="form-card" aria-labelledby="form-title">
+      <div class="card-heading">
+        <div>
+          <p class="step-label">NOVO RELATO</p>
+          <h2 id="form-title">O que aconteceu?</h2>
+        </div>
+        <span class="required-note"><span aria-hidden="true">*</span> Obrigatório</span>
+      </div>
+
+      <form>
+        <div class="field">
+          <label for="title">Título do relato <span aria-hidden="true">*</span></label>
+          <input id="title" name="title" type="text" placeholder="Ex.: Projetor da sala não liga" required>
+        </div>
+
+        <div class="field">
+          <label for="description">Descreva o problema <span aria-hidden="true">*</span></label>
+          <textarea id="description" name="description" rows="5" placeholder="Conte o que está acontecendo e qualquer detalhe que possa ajudar." required></textarea>
+          <span class="field-hint">Evite incluir informações pessoais no relato.</span>
+        </div>
+
+        <div class="field">
+          <label for="location">Onde fica? <span aria-hidden="true">*</span></label>
+          <input id="location" name="location" type="text" placeholder="Ex.: Bloco B, sala 12" required>
+        </div>
+
+        <div class="field">
+          <label for="photo">Foto <span class="optional">(opcional)</span></label>
+          <input class="file-input" id="photo" name="photo" type="file" accept="image/*">
+          <span class="field-hint">Se possível, anexe uma imagem que ajude a mostrar o problema.</span>
+        </div>
+
+        <fieldset class="follow-up">
+          <legend>Quer acompanhar este relato?</legend>
+          <p>Informe seu e-mail para receber um protocolo e atualizações. O e-mail será usado somente para acompanhamento, ficará oculto para a secretaria e não será exibido à equipe que analisa os relatos.</p>
+          <label for="email">E-mail <span class="optional">(opcional)</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com">
+          <span class="field-hint">Para consultar o relato nesta tela, será necessário confirmar um código enviado para este e-mail.</span>
+        </fieldset>
+
+        <div class="form-footer">
+          <p><span aria-hidden="true">*</span> Campos obrigatórios</p>
+          <button type="button" disabled aria-describedby="availability-note">Enviar relato</button>
+        </div>
+        <p class="availability-note" id="availability-note">O envio será habilitado quando a conexão segura com o sistema estiver pronta.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>Ouvidoria do Campus</span>
+    <span>Um campus melhor começa com a escuta.</span>
+  </footer>
+</body>
+</html>

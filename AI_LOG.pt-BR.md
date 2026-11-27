@@ -14,7 +14,7 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 
 ## Ferramentas
 
-- (ex.: ChatGPT, GitHub Copilot, Cursor, outro)
+- GitHub Copilot (Copilot SDK no VS Code).
 
 ## Modelo de registro
 
@@ -35,9 +35,9 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 - **O que o time aproveitou:** a estrutura do middleware e o fluxo de verificação do token.
 - **O que o time corrigiu ou rejeitou, e por quê:** atualizamos a biblioteca, movemos o segredo para variável de ambiente e incluímos testes. O exemplo de rota foi reescrito para se adequar ao nosso modelo de usuário.
 
-### [data] — [tarefa ou trecho]
+### 26/11/2026 — Configuração do PostgreSQL no Supabase
 
-- **Prompt principal:**
-- **O que a IA gerou:**
-- **O que o time aproveitou:**
-- **O que o time corrigiu ou rejeitou, e por quê:**
+- **Prompt principal:** configurar o projeto para a decisão aprovada pela equipe de usar Supabase.
+- **O que a IA gerou:** configuração da conexão PostgreSQL por variáveis de ambiente, alteração das dependências e atualização alinhada da documentação.
+- **O que o time aproveitou:** a configuração para PostgreSQL no Supabase e o registro da decisão aprovada.
+- **O que o time corrigiu ou rejeitou, e por quê:** não conectar o repositório GitHub porque ele não pertence à pessoa responsável pelo banco; manter as credenciais fora do repositório.

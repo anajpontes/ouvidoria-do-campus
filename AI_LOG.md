@@ -14,7 +14,7 @@ Copy the template below whenever you need a new entry.
 
 ## Tools
 
-- (e.g. ChatGPT, GitHub Copilot, Cursor, other)
+- GitHub Copilot (Copilot SDK in VS Code).
 
 ## Entry template
 
@@ -35,9 +35,9 @@ Copy the template below whenever you need a new entry.
 - **What the team kept:** the middleware structure and the token verification flow.
 - **What the team corrected or rejected, and why:** we updated the library, moved the secret to an environment variable and added tests. The sample route was rewritten to fit our user model.
 
-### [date] — [task or section]
+### 26/11/2026 — Supabase PostgreSQL configuration
 
-- **Main prompt:**
-- **What the AI generated:**
-- **What the team kept:**
-- **What the team corrected or rejected, and why:**
+- **Main prompt:** configure the project for the team's approved Supabase database decision.
+- **What the AI generated:** PostgreSQL datasource configuration using environment variables, dependency changes and aligned documentation updates.
+- **What the team kept:** the Supabase PostgreSQL configuration and documentation of the approved decision.
+- **What the team corrected or rejected, and why:** no GitHub repository was linked because it is not owned by the database administrator; credentials were kept out of the repository.
