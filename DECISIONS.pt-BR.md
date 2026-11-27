@@ -54,3 +54,9 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 - **Decisão:** Preparar a entidade JPA `Chamado` com base nos campos propostos para o relato, mantendo o e-mail fora do modelo de dados visível à secretaria. Manter a configuração SQLite existente para testes locais de mapeamento até que o esquema e o método de conexão com o Supabase sejam confirmados.
 - **Alternativas consideradas:** Aguardar o esquema do banco antes de criar qualquer modelo de domínio ou trocar a configuração de conexão antes de o contrato do Supabase estar pronto.
 - **Motivo:** Os campos principais do relato e os status já são conhecidos; seu mapeamento pode ser revisado e testado localmente sem tratar o esquema Supabase ou a API proposta como definitivos.
+
+## 27/11/2026 — Escopo inicial de persistência do back-end
+
+- **Decisão:** Usar SQLite/JPA no desenvolvimento local até o colega confirmar o esquema do Supabase; depois, integrar ao PostgreSQL do Supabase via JPA. O e-mail do reclamante é obrigatório e será armazenado em uma entidade privada de acompanhamento, separada de `Chamado`. Adiar o upload de fotos até que o Supabase Storage esteja pronto. Adiar o envio de códigos e os endpoints de acompanhamento até definir o provedor de e-mail e o ciclo de vida do código; adiar os endpoints da secretaria até integrar o Supabase Auth. Manter os campos de sugestão/revisão da IA, mas não alegar classificação real por IA antes da escolha de um provedor.
+- **Alternativas consideradas:** Esperar o banco para iniciar todo o back-end, guardar o e-mail junto dos dados visíveis à secretaria, salvar fotos temporariamente no disco local ou publicar rotas sem os serviços de e-mail/autenticação necessários.
+- **Motivo:** Permitir o avanço seguro da persistência local sem acoplar o back-end a um esquema não aprovado nem expor dados privados, evitando fluxos falsos de envio, acompanhamento, foto, IA ou login da equipe.

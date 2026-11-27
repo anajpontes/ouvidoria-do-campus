@@ -54,3 +54,9 @@ Copy the template below whenever you need a new entry.
 - **Decision:** Prepare the `Chamado` JPA entity against the proposed report fields, keeping the email out of the staff-facing report model. Keep the existing SQLite configuration for local mapping tests until the Supabase schema and connection method are confirmed.
 - **Alternatives considered:** Wait for the database schema before writing any domain model, or switch the connection configuration before the Supabase contract is ready.
 - **Rationale:** The core report fields and statuses are already known, so their mapping can be reviewed and tested locally without claiming that the proposed Supabase schema or API is final.
+
+## 27/11/2026 — Initial backend persistence scope
+
+- **Decision:** Use SQLite/JPA for local development until the teammate confirms the Supabase schema, then integrate with Supabase PostgreSQL through JPA. The complainant's email is required and is stored in a separate private follow-up entity, not in `Chamado`. Keep photo upload deferred until Supabase Storage is ready. Defer email-code delivery and tracking endpoints until an email provider and code lifecycle are agreed; defer secretary queue endpoints until Supabase Auth is integrated. Keep AI suggestion/review fields, but do not claim real AI classification until a provider is selected.
+- **Alternatives considered:** Wait for the database before all backend work, store email with staff-facing report data, save photos to local disk temporarily, or expose routes before their required email/authentication services exist.
+- **Rationale:** This allows safe local persistence work without coupling the backend to an unapproved schema or exposing private data, while avoiding a misleading submission, tracking, photo, AI, or staff-login flow.

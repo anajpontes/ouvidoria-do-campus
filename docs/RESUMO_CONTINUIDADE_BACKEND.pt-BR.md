@@ -5,9 +5,10 @@ Este resumo registra o ponto atual do trabalho para continuar em outro computado
 ## Estado no Git
 
 - **Branch:** `feat/backend-supabase-integration`
-- **Commit enviado ao GitHub:** `c64f362` — `feat(backend): add initial report model and Supabase schema draft`
+- **HEAD atual:** `1d8d64e` — `docs: add backend continuation summary`
 - **Remoto:** `origin/feat/backend-supabase-integration`
-- As alterações desta tarefa estão commitadas e enviadas. Um arquivo local `.vscode/settings.json` ficou fora do commit e não é necessário para continuar.
+- A branch local estava sincronizada com o remoto antes desta etapa de implementação.
+- As alterações recentes de persistência e documentação estão **no diretório de trabalho e ainda não foram commitadas**. Revise o `git status` antes de criar um commit.
 
 ## Como continuar em casa
 
@@ -38,21 +39,22 @@ cd backend
 - Esqueleto Spring Boot com Java 17, Spring Data JPA e configuração SQLite existente.
 - Entidade inicial `Chamado` em `backend/src/main/java/br/com/senac/ouvidoria/model/Chamado.java`, com UUID, protocolo, título, descrição, localização, caminho opcional da foto, status, classificação/prioridade sugeridas e revisadas, resposta da equipe e timestamps.
 - Status persistido como texto: `RECEBIDO`, `EM_ANDAMENTO`, `RESOLVIDO`.
-- O e-mail do reclamante não está na entidade `Chamado`; o modelo privado de acompanhamento ainda não foi implementado.
-- Teste de persistência local adicionado em `backend/src/test/java/br/com/senac/ouvidoria/OuvidoriaApplicationTests.java`.
-- **Validação concluída:** `.\mvnw.cmd test` passou com 2 testes.
-- Decisões registradas em `DECISIONS.md` e `DECISIONS.pt-BR.md`.
+- Modelo `AcompanhamentoPrivado` criado para guardar o e-mail obrigatório separado de `Chamado`, com vínculo único por chamado e validação de e-mail.
+- Repositórios JPA de chamado e acompanhamento privado criados.
+- `RegistrarChamadoService` salva o chamado e o e-mail privado na mesma transação e rejeita e-mail inválido e chamados já persistidos.
+- **Validação concluída:** `.\mvnw.cmd test` passou com 4 testes.
+- As dependências existentes no `backend/pom.xml` já atendem a esta etapa; o arquivo não precisou ser alterado.
+- Decisões e contratos atualizados em `DECISIONS.md`, `DECISIONS.pt-BR.md` e nas duas versões de `docs/BACKEND_SUPABASE_CONTRACT_DRAFT`.
 
 ## Supabase: estado e documentos
 
-A equipe decidiu usar Supabase. Um colega está responsável pelo banco. Ainda precisam ser confirmados:
+A equipe decidiu usar Supabase e um colega está responsável pelo esquema. A direção acordada é integrar o Spring Boot ao PostgreSQL do Supabase via JPA depois que o esquema for confirmado. SQLite continua sendo usado localmente enquanto isso. Ainda precisam ser confirmados:
 
-1. Esquema final das tabelas e nomes/tipos das colunas.
-2. Método de conexão do Spring: PostgreSQL por JDBC/JPA ou outra opção.
-3. Armazenamento e permissões das fotos no Supabase Storage.
-4. Proteção do e-mail, emissão/expiração/reenvio do código e limites de tentativas.
-5. Autenticação e permissões da secretaria.
-6. Valores válidos de tipo e prioridade.
+1. Esquema final das tabelas e nomes/tipos das colunas, incluindo o alinhamento do modelo privado com o esquema do colega.
+2. Provedor de e-mail e política do código de acompanhamento (expiração, tentativas e reenvio), mantendo o e-mail inacessível à secretaria.
+3. Provisionamento e permissões da secretaria usando Supabase Auth.
+4. Armazenamento e permissões das fotos no Supabase Storage.
+5. Valores oficiais de tipo/prioridade e provedor para classificação real por IA.
 
 Documentos para compartilhar/revisar com o colega:
 
@@ -64,11 +66,11 @@ Documentos para compartilhar/revisar com o colega:
 
 ## Próximos passos recomendados
 
-1. Pedir ao colega responsável pelo banco para revisar o prompt e gerar/propor o SQL.
-2. Revisar o SQL com a equipe e confirmar método de conexão e decisões de segurança antes de executá-lo.
-3. Atualizar este contrato e as duas versões de `DECISIONS` quando as decisões forem aprovadas.
-4. Só então configurar o acesso ao Supabase usando variáveis de ambiente/segredos fora do Git.
-5. Ajustar o mapeamento JPA ao esquema aprovado e testar a persistência contra o banco definido.
-6. Definir o contrato da API com quem está trabalhando no frontend; depois implementar endpoints reais, um fluxo por etapa.
+1. Alinhar com o colega do banco o esquema privado do e-mail e o restante das tabelas; não aplicar migration presumida.
+2. Definir o provedor de envio e o ciclo de vida do código, além do formato do protocolo e do contrato da API com o colega do frontend.
+3. Implementar e testar a submissão pública e o fluxo de solicitar/validar código; esses endpoints ainda não existem.
+4. Quando o esquema do Supabase estiver pronto, configurar a conexão PostgreSQL/JPA com segredos fora do Git e validar o mapeamento contra esse banco.
+5. Integrar Supabase Auth antes de criar endpoints protegidos para a fila e atualização da secretaria.
+6. Integrar fotos via Supabase Storage e decidir o provedor/valores oficiais da classificação por IA.
 
 Não criar endpoints fictícios, não enviar chaves privilegiadas ao navegador e não commitar credenciais. A secretaria não deve receber o e-mail nos dados retornados pela API.
