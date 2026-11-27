@@ -42,3 +42,15 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 - **Decisão:** Desenvolver primeiro a tela responsiva de abertura de relato em HTML e CSS. Manter o envio desabilitado até existir uma API real; implementar login da secretaria e consulta/validação por código em etapas posteriores.
 - **Alternativas consideradas:** Criar todas as telas e simular uma integração antes de o backend disponibilizar os endpoints.
 - **Motivo:** Evitar inventar APIs ou apresentar um envio simulado como funcional e manter o desenvolvimento em etapas pequenas.
+
+## 26/11/2026 — Banco de dados com Supabase
+
+- **Decisão:** Usar o Supabase como banco de dados do projeto, substituindo o SQLite configurado anteriormente. O colega responsável pelo banco definirá o esquema; a integração com o Spring Boot seguirá o esquema e o método de conexão acordados.
+- **Alternativas consideradas:** Manter a configuração SQLite existente.
+- **Motivo:** A equipe escolheu Supabase e atribuiu a responsabilidade pelo banco a um colega. Definir primeiro o esquema e o método de conexão evita implementar com base em um contrato presumido.
+
+## 26/11/2026 — Modelo JPA inicial do chamado
+
+- **Decisão:** Preparar a entidade JPA `Chamado` com base nos campos propostos para o relato, mantendo o e-mail fora do modelo de dados visível à secretaria. Manter a configuração SQLite existente para testes locais de mapeamento até que o esquema e o método de conexão com o Supabase sejam confirmados.
+- **Alternativas consideradas:** Aguardar o esquema do banco antes de criar qualquer modelo de domínio ou trocar a configuração de conexão antes de o contrato do Supabase estar pronto.
+- **Motivo:** Os campos principais do relato e os status já são conhecidos; seu mapeamento pode ser revisado e testado localmente sem tratar o esquema Supabase ou a API proposta como definitivos.

@@ -42,3 +42,15 @@ Copy the template below whenever you need a new entry.
 - **Decision:** First build the responsive report-submission screen with HTML and CSS. Keep submission disabled until a real API exists; implement the secretary login and code-based lookup/verification in later steps.
 - **Alternatives considered:** Build every screen and simulate integration before the back-end endpoints are available.
 - **Rationale:** Avoid inventing APIs or presenting a simulated submission as functional, and keep development in small steps.
+
+## 26/11/2026 — Supabase database
+
+- **Decision:** Use Supabase as the project's database instead of the previously configured SQLite. The teammate responsible for the database will define its schema; the Spring Boot integration will follow the agreed schema and connection method.
+- **Alternatives considered:** Keep using the existing SQLite configuration.
+- **Rationale:** The team chose Supabase and assigned database ownership to a teammate. Agreeing on the schema and connection method first avoids implementing against an assumed contract.
+
+## 26/11/2026 — Initial JPA report model
+
+- **Decision:** Prepare the `Chamado` JPA entity against the proposed report fields, keeping the email out of the staff-facing report model. Keep the existing SQLite configuration for local mapping tests until the Supabase schema and connection method are confirmed.
+- **Alternatives considered:** Wait for the database schema before writing any domain model, or switch the connection configuration before the Supabase contract is ready.
+- **Rationale:** The core report fields and statuses are already known, so their mapping can be reviewed and tested locally without claiming that the proposed Supabase schema or API is final.
