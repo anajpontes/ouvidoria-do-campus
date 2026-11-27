@@ -51,7 +51,7 @@ A demonstração das telas está em:
 - `frontend/styles.css`
 - `frontend/mock-api.js`
 - `frontend/app.js`
-- `frontend/assets/senac-logo.svg`
+- `frontend/assets/senac-logo-orange-blue.png`
 
 O protótipo permite criar um relato, consultar por protocolo e código fictício e revisar registros na fila. A fila exige um login de demonstração (`secretaria@demo.local` / `campus123`), mantido somente no `sessionStorage`; isso não é autenticação real e não protege dados. Os relatos ficam somente no `sessionStorage` do navegador; o código não é enviado por e-mail; fotos não são enviadas; as sugestões são fictícias e não são produzidas por IA. A integração com a API real ainda não foi implementada.
 

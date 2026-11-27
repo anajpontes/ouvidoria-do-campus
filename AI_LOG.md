@@ -28,6 +28,54 @@ Copy the template below whenever you need a new entry.
 
 ## Log
 
+### 2026-11-27 — Reduce the width of the demo notice
+- **Main prompt:** "Reduce the width of the local demo notice."
+- **What the AI generated:** a centered notice with a 760 px maximum width and responsive side margins.
+- **What the team kept:** the same styling is applied to demo notices across screens for consistency.
+- **What the team corrected or rejected, and why:** kept the existing text and colors.
+
+### 2026-11-27 — Replace the Senac logo with the supplied artwork
+- **Main prompt:** "Use this logo style, with a transparent background."
+- **What the AI generated:** a tightly cropped copy of the supplied PNG, preserving transparency, and updated the logo in all four headers.
+- **What the team kept:** the supplied artwork remains unchanged; cropping removes only transparent margins for a better fit.
+- **What the team corrected or rejected, and why:** removed the previous colored frame so it would not compete with the selected logo.
+
+### 2026-11-27 — Apply the interface palette around the Senac logo
+- **Main prompt:** "Change the Senac logo to orange, blue, and gray."
+- **What the AI generated:** a three-color orange, blue, and gray frame around the locally bundled Senac logo.
+- **What the team kept:** the official logo artwork itself remains unchanged; only its surrounding UI frame uses the requested colors.
+- **What the team corrected or rejected, and why:** did not recolor the official mark to preserve its original branding.
+
+### 2026-11-27 — Strengthen surfaces and enlarge interface text
+- **Main prompt:** "Make the colors stronger and increase text sizes a little."
+- **What the AI generated:** deeper blue-gray and orange panel backgrounds and modest increases to navigation, form labels, body copy, filters, and metadata.
+- **What the team kept:** white input controls and the existing status color meanings remain for clarity.
+- **What the team corrected or rejected, and why:** no behavior or layout flow changed; responsive widths were checked after typography updates.
+
+### 2026-11-27 — Strengthen colored background surfaces
+- **Main prompt:** "Increase the background colors; don't leave everything white."
+- **What the AI generated:** stronger blue-gray page and panel backgrounds, blue-tinted form and tracking cards, orange follow-up and selected ticket surfaces, and varied queue summary cards.
+- **What the team kept:** input surfaces stay light for readability, while status colors and all interactions remain unchanged.
+- **What the team corrected or rejected, and why:** no new dependencies or screen flows were introduced; this is a shared CSS-only visual refinement.
+
+### 2026-11-27 — Add blue, orange, and gray visual accents
+- **Main prompt:** "Add more color to the screens, making them look nicer with blue, orange, and gray."
+- **What the AI generated:** refined shared screen styling with a blue-gray canvas, blue-tinted intro and queue surfaces, orange accents, and clearer summary cards.
+- **What the team kept:** existing layout, interactions, and semantic status colors remain unchanged.
+- **What the team corrected or rejected, and why:** no new UI flows or dependencies were added; only shared visual styles were adjusted.
+
+### 2026-11-27 — Increase status label size
+- **Main prompt:** "Increase the font size for the status."
+- **What the AI generated:** increased status badge text size and spacing while leaving other compact labels unchanged.
+- **What the team kept:** the larger status labels improve visibility in the staff queue and tracking view.
+- **What the team corrected or rejected, and why:** no status colors, behavior, or API logic changed.
+
+### 2026-11-27 — Color-code staff queue statuses
+- **Main prompt:** "On the staff screen, color the issue status orange for received, red for in progress, and green for resolved."
+- **What the AI generated:** updated the shared status badge colors to orange, red, and green with readable foreground/background contrast.
+- **What the team kept:** the same status styling is used in the staff queue and claimant tracking view.
+- **What the team corrected or rejected, and why:** no status behavior or API logic changed; this was a visual-only update.
+
 ### 2026-11-26 — Senac visual identity and screen polish
 - **Main prompt:** "Improve the screen designs and add the Senac logo."
 - **What the AI generated:** a refreshed blue brand palette, responsive navigation and card styling across the front-end screens, using a local Senac logo asset.
