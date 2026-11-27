@@ -67,13 +67,15 @@ Describe how the repository is organized. Adjust the example below to the team's
 
 ```powershell
 cd backend
-$env:SUPABASE_DB_URL = "jdbc:postgresql://<host>:<port>/<database>?sslmode=require"
-$env:SUPABASE_DB_USERNAME = "<username>"
+$env:SUPABASE_DB_URL = "jdbc:postgresql://aws-1-us-east-2.pooler.supabase.com:5432/postgres?sslmode=require"
+$env:SUPABASE_DB_USERNAME = "postgres.ccnrgujttgtebecizhij"
 $env:SUPABASE_DB_PASSWORD = "<database-password>"
 .\mvnw.cmd spring-boot:run
 ```
 
-Use the host, port, database, and username shown under **Connect** in Supabase. Choose the connection option appropriate for your network; do not commit or share the database password.
+These values match the team's Supabase **Session Pooler** connection shown under **Connect** and work on IPv4 networks. The URL and username also have defaults in `application.properties`; keep the assignments above if you prefer to set them explicitly. Enter the database password only in your local terminal. Do not send it in chat or commit it.
+
+Before starting the backend for the first time, check the Table Editor to see whether the tables already exist. If they are absent, run the approved migration in [docs/sql/001_create_ouvidoria_tables.sql](docs/sql/001_create_ouvidoria_tables.sql) once from the Supabase SQL Editor. Hibernate is set to `validate` and will not create or alter tables.
 
 ### Front-end
 
