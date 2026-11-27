@@ -20,9 +20,9 @@ Não acrescentem funcionalidades fora do MVP sem decisão explícita da equipe.
 ## Tecnologias e estrutura
 
 - **Back-end:** Java com Spring Boot.
-- **Front-end:** HTML e CSS.
+- **Front-end:** HTML, CSS e JavaScript sem frameworks.
 - **Banco:** SQLite.
-- O front-end deve consumir a API real do back-end. Não inventem endpoints nem apresentem dados simulados como se fossem reais.
+- O front-end deve consumir a API real do back-end quando ela estiver pronta. O modo de demonstração pode usar dados simulados, desde que sejam claramente identificados como fictícios e não apresentados como dados reais.
 - Não adicionem frameworks ou dependências sem aprovação da equipe.
 
 O back-end ainda está no início: a entidade `Chamado` está vazia e não há endpoints da API. A configuração existente aponta para SQLite. Antes de integrar telas, leiam o código atual e confirmem os endpoints, métodos, JSON e tratamento de erros.
@@ -30,7 +30,7 @@ O back-end ainda está no início: a entidade `Chamado` está vazia e não há e
 ## Regras decididas para os relatos
 
 - O reclamante informa título, descrição e local; a foto é opcional.
-- O reclamante pode informar um e-mail opcional para receber protocolo e acompanhar a reclamação.
+- O reclamante informa um e-mail obrigatório para receber o protocolo e acompanhar a reclamação.
 - A consulta pela tela exige confirmar um código enviado para esse e-mail.
 - O e-mail serve somente para acompanhamento e não pode ficar visível nem acessível à secretaria.
 - A equipe da secretaria precisa de login para acessar a fila.
@@ -38,16 +38,22 @@ O back-end ainda está no início: a entidade `Chamado` está vazia e não há e
 
 As regras acima são requisitos do produto, não significam que já estejam implementadas no back-end. Em especial, a privacidade do e-mail só estará garantida quando a API e o armazenamento impedirem seu acesso pela secretaria.
 
-Não inventem autenticação, formato/expiração/reenvio de código, armazenamento de fotos ou regras de classificação e prioridade. Se forem necessários e ainda não estiverem decididos, perguntem à equipe antes de implementar.
+Não inventem autenticação, formato/expiração/reenvio de código, armazenamento de fotos ou regras de classificação e prioridade para o sistema real. O mock demonstra somente o fluxo visual: não envia e-mails ou fotos, não autentica a equipe e não usa IA real. Se forem necessárias regras reais ainda não decididas, perguntem à equipe antes de implementar.
 
 ## Estado atual do front-end
 
-A primeira tela está em:
+A demonstração das telas está em:
 
 - `frontend/index.html`
+- `frontend/consulta.html`
+- `frontend/equipe-login.html`
+- `frontend/fila.html`
 - `frontend/styles.css`
+- `frontend/mock-api.js`
+- `frontend/app.js`
+- `frontend/assets/senac-logo.svg`
 
-Ela contém o formulário visual do reclamante, é responsiva e inclui a explicação sobre o e-mail. O botão de envio está intencionalmente desabilitado até existir uma API real. Login da secretaria, consulta por código, integração e fila ainda não foram implementados.
+O protótipo permite criar um relato, consultar por protocolo e código fictício e revisar registros na fila. A fila exige um login de demonstração (`secretaria@demo.local` / `campus123`), mantido somente no `sessionStorage`; isso não é autenticação real e não protege dados. Os relatos ficam somente no `sessionStorage` do navegador; o código não é enviado por e-mail; fotos não são enviadas; as sugestões são fictícias e não são produzidas por IA. A integração com a API real ainda não foi implementada.
 
 Para visualizar a tela, execute na raiz do repositório:
 

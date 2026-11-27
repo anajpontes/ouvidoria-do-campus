@@ -30,3 +30,9 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 - **Decisão:**
 - **Alternativas consideradas:**
 - **Motivo:**
+
+## 26/11/2026 — Exigir e-mail para acompanhar relatos
+
+- **Decisão:** exigir um endereço de e-mail ao enviar uma reclamação para que o reclamante receba o protocolo e acompanhe as atualizações.
+- **Alternativas consideradas:** manter o e-mail opcional, o que impediria acompanhar pelo protocolo e pelo fluxo de confirmação os relatos enviados sem e-mail.
+- **Motivo:** o acompanhamento depende do envio de um código de confirmação para o e-mail associado à reclamação. O e-mail continua restrito ao acompanhamento pelo reclamante e não pode ficar visível para a equipe do campus.

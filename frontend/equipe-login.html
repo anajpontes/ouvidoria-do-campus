@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f7fa">
+  <meta name="description" content="Acesso demonstrativo à fila da equipe da Ouvidoria do Campus.">
+  <title>Ouvidoria do Campus | Acesso da equipe</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Ouvidoria do Campus, início">
+      <span class="brand-senac"><img src="assets/senac-logo.svg" alt="Senac"></span>
+      <span class="brand-separator" aria-hidden="true"></span>
+      <span class="brand-name">Ouvidoria <strong>do Campus</strong></span>
+    </a>
+    <nav class="header-nav" aria-label="Navegação principal">
+      <a class="nav-link" href="index.html">Novo relato</a>
+      <a class="nav-link" href="consulta.html">Acompanhar</a>
+      <a class="nav-link active" href="equipe-login.html" aria-current="page">Equipe · demo</a>
+    </nav>
+  </header>
+
+  <div class="demo-banner" role="note">Login fictício para demonstração local. Não use credenciais reais; este formulário não oferece segurança de produção.</div>
+
+  <main class="login-main">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow"><span aria-hidden="true"></span> Área da equipe</p>
+      <h1 id="page-title">Acesso à fila</h1>
+      <p class="intro-copy">Entre com as credenciais de demonstração para abrir a fila simulada de relatos.</p>
+    </section>
+
+    <section class="form-card login-card" aria-labelledby="login-title">
+      <div class="card-heading">
+        <div>
+          <p class="step-label">DEMONSTRAÇÃO</p>
+          <h2 id="login-title">Entrar na equipe</h2>
+        </div>
+      </div>
+
+      <div class="demo-credentials" role="note">
+        <strong>Credenciais fictícias</strong>
+        <span>Usuário: <code>secretaria@demo.local</code></span>
+        <span>Senha: <code>campus123</code></span>
+      </div>
+
+      <form id="team-login-form">
+        <div class="field">
+          <label for="username">Usuário <span aria-hidden="true">*</span></label>
+          <input id="username" name="username" type="email" autocomplete="username" value="secretaria@demo.local" required>
+        </div>
+        <div class="field">
+          <label for="password">Senha <span aria-hidden="true">*</span></label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required>
+        </div>
+        <div class="form-footer">
+          <p>Somente para a demonstração</p>
+          <button type="submit">Entrar</button>
+        </div>
+      </form>
+
+      <div class="feedback" id="login-result" aria-live="polite" hidden></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>Ouvidoria do Campus</span>
+    <span>Login demonstrativo — sem autenticação real.</span>
+  </footer>
+  <script src="mock-api.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

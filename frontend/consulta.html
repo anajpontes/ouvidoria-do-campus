@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f7fa">
+  <meta name="description" content="Acompanhe um relato pelo protocolo na Ouvidoria do Campus.">
+  <title>Ouvidoria do Campus | Acompanhar relato</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Ouvidoria do Campus, início">
+      <span class="brand-senac"><img src="assets/senac-logo.svg" alt="Senac"></span>
+      <span class="brand-separator" aria-hidden="true"></span>
+      <span class="brand-name">Ouvidoria <strong>do Campus</strong></span>
+    </a>
+    <nav class="header-nav" aria-label="Navegação principal">
+      <a class="nav-link" href="index.html">Novo relato</a>
+      <a class="nav-link active" href="consulta.html" aria-current="page">Acompanhar</a>
+      <a class="nav-link" href="equipe-login.html">Equipe · demo</a>
+    </nav>
+  </header>
+
+  <div class="demo-banner" role="note">Demonstração local: dados e ações são simulados. Não informe dados pessoais reais.</div>
+
+  <main id="inicio">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow"><span aria-hidden="true"></span> Acompanhamento seguro</p>
+      <h1 id="page-title">Confira o andamento<br class="desktop-break"> do seu relato</h1>
+      <p class="intro-copy">Informe o protocolo recebido na abertura. O sistema identificará o relato e enviará um código para o e-mail informado pelo reclamante.</p>
+    </section>
+
+    <section class="form-card consultation-card" aria-labelledby="form-title">
+      <div class="card-heading">
+        <div>
+          <p class="step-label">ACOMPANHAR RELATO</p>
+          <h2 id="form-title">Confirmar acesso</h2>
+        </div>
+        <span class="required-note"><span aria-hidden="true">*</span> Obrigatório</span>
+      </div>
+
+      <ol class="verification-note" aria-label="Etapas do acompanhamento">
+        <li class="verification-step current">
+          <strong>1. Informar</strong>
+          Digite o protocolo.
+        </li>
+        <li class="verification-step">
+          <strong>2. Confirmar</strong>
+          Informe o código recebido.
+        </li>
+        <li class="verification-step">
+          <strong>3. Acompanhar</strong>
+          Veja o andamento.
+        </li>
+      </ol>
+
+      <p class="privacy-note">
+        No sistema real, o back-end enviará um código ao e-mail vinculado ao protocolo. Nesta demonstração, nenhum e-mail é enviado.
+      </p>
+
+      <form id="protocol-form">
+        <div class="field">
+          <label for="protocol">Número do protocolo <span aria-hidden="true">*</span></label>
+          <input id="protocol" name="protocol" type="text" placeholder="Ex.: OUV-2026-000123" required>
+          <span class="field-hint">Use o protocolo recebido ao abrir o relato.</span>
+        </div>
+
+        <div class="form-footer">
+          <p><span aria-hidden="true">*</span> Campos obrigatórios</p>
+          <button type="submit">Solicitar código</button>
+        </div>
+      </form>
+
+      <div class="feedback" id="protocol-result" aria-live="polite" hidden></div>
+
+      <form class="verification-form" id="code-form" hidden>
+        <div class="field">
+          <label for="verification-code">Código de demonstração <span aria-hidden="true">*</span></label>
+          <input id="verification-code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" placeholder="Digite o código mostrado acima" required>
+        </div>
+        <div class="form-footer">
+          <p>Confirmação simulada</p>
+          <button type="submit">Verificar código</button>
+        </div>
+      </form>
+
+      <section class="tracking-result" id="tracking-result" aria-live="polite" hidden></section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>Ouvidoria do Campus</span>
+    <span>Um campus melhor começa com a escuta.</span>
+  </footer>
+  <script src="mock-api.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

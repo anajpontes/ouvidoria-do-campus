@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f7f4">
+  <meta name="theme-color" content="#f3f7fa">
   <meta name="description" content="Relate problemas de infraestrutura do campus à Ouvidoria do Campus.">
   <title>Ouvidoria do Campus | Novo relato</title>
   <link rel="stylesheet" href="styles.css">
@@ -11,11 +11,18 @@
 <body>
   <header class="site-header">
     <a class="brand" href="#inicio" aria-label="Ouvidoria do Campus, início">
-      <span class="brand-mark" aria-hidden="true">O</span>
-      <span>Ouvidoria <strong>do Campus</strong></span>
+      <span class="brand-senac"><img src="assets/senac-logo.svg" alt="Senac"></span>
+      <span class="brand-separator" aria-hidden="true"></span>
+      <span class="brand-name">Ouvidoria <strong>do Campus</strong></span>
     </a>
-    <span class="header-label">Infraestrutura e espaços</span>
+    <nav class="header-nav" aria-label="Navegação principal">
+      <a class="nav-link active" href="index.html" aria-current="page">Novo relato</a>
+      <a class="nav-link" href="consulta.html">Acompanhar</a>
+      <a class="nav-link" href="equipe-login.html">Equipe · demo</a>
+    </nav>
   </header>
+
+  <div class="demo-banner" role="note">Demonstração local: dados e ações são simulados. Não informe dados pessoais reais.</div>
 
   <main id="inicio">
     <section class="intro" aria-labelledby="page-title">
@@ -37,7 +44,7 @@
         <span class="required-note"><span aria-hidden="true">*</span> Obrigatório</span>
       </div>
 
-      <form>
+      <form id="report-form">
         <div class="field">
           <label for="title">Título do relato <span aria-hidden="true">*</span></label>
           <input id="title" name="title" type="text" placeholder="Ex.: Projetor da sala não liga" required>
@@ -61,19 +68,20 @@
         </div>
 
         <fieldset class="follow-up">
-          <legend>Quer acompanhar este relato?</legend>
-          <p>Informe seu e-mail para receber um protocolo e atualizações. O e-mail será usado somente para acompanhamento, ficará oculto para a secretaria e não será exibido à equipe que analisa os relatos.</p>
-          <label for="email">E-mail <span class="optional">(opcional)</span></label>
-          <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com">
+          <legend>Como podemos enviar seu protocolo?</legend>
+          <p>Informe seu e-mail para receber o protocolo e acompanhar as atualizações. O e-mail será usado somente para acompanhamento, ficará oculto para a secretaria e não será exibido à equipe que analisa os relatos.</p>
+          <label for="email">E-mail <span aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" required>
           <span class="field-hint">Para consultar o relato nesta tela, será necessário confirmar um código enviado para este e-mail.</span>
         </fieldset>
 
         <div class="form-footer">
           <p><span aria-hidden="true">*</span> Campos obrigatórios</p>
-          <button type="button" disabled aria-describedby="availability-note">Enviar relato</button>
+          <button type="submit">Enviar relato</button>
         </div>
-        <p class="availability-note" id="availability-note">O envio será habilitado quando a conexão segura com o sistema estiver pronta.</p>
+        <p class="availability-note">No protótipo, o relato fica salvo apenas nesta sessão do navegador. O e-mail e a foto não são enviados.</p>
       </form>
+      <div class="feedback" id="report-result" aria-live="polite" hidden></div>
     </section>
   </main>
 
@@ -81,5 +89,7 @@
     <span>Ouvidoria do Campus</span>
     <span>Um campus melhor começa com a escuta.</span>
   </footer>
+  <script src="mock-api.js" defer></script>
+  <script src="app.js" defer></script>
 </body>
 </html>

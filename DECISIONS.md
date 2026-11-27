@@ -30,3 +30,9 @@ Copy the template below whenever you need a new entry.
 - **Decision:**
 - **Alternatives considered:**
 - **Rationale:**
+
+## 2026-11-26 — Require an email for complaint tracking
+
+- **Decision:** require an email address when submitting a complaint so the claimant can receive its protocol and follow updates.
+- **Alternatives considered:** keep the email optional, which would prevent complaints submitted without one from being tracked through the protocol and verification flow.
+- **Rationale:** the tracking flow relies on sending a verification code to the email associated with the complaint. The email remains restricted to claimant tracking and must not be visible to the campus staff.
