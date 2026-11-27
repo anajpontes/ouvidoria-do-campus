@@ -21,11 +21,11 @@ Não acrescentem funcionalidades fora do MVP sem decisão explícita da equipe.
 
 - **Back-end:** Java com Spring Boot.
 - **Front-end:** HTML e CSS.
-- **Banco:** SQLite.
+- **Banco:** PostgreSQL hospedado no Supabase.
 - O front-end deve consumir a API real do back-end. Não inventem endpoints nem apresentem dados simulados como se fossem reais.
 - Não adicionem frameworks ou dependências sem aprovação da equipe.
 
-O back-end ainda está no início: a entidade `Chamado` está vazia e não há endpoints da API. A configuração existente aponta para SQLite. Antes de integrar telas, leiam o código atual e confirmem os endpoints, métodos, JSON e tratamento de erros.
+O back-end ainda está no início: a entidade `Chamado` está vazia e não há endpoints da API. A conexão PostgreSQL é configurada pelas variáveis de ambiente `SUPABASE_DB_URL`, `SUPABASE_DB_USERNAME` e `SUPABASE_DB_PASSWORD`; não versionem credenciais. Antes de integrar telas, leiam o código atual e confirmem os endpoints, métodos, JSON e tratamento de erros.
 
 ## Regras decididas para os relatos
 

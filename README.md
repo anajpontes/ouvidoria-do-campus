@@ -34,7 +34,9 @@ Campus infrastructure desk (Ouvidoria do campus) — campus life and community
 
 ## Stack
 
-(languages, frameworks and libraries; the back-end may be Java, Python or Node.js, alone or combined, as long as they are integrated; the front-end is required — web, desktop or mobile)
+- Back-end: Java 17 and Spring Boot.
+- Front-end: HTML and CSS.
+- Database: PostgreSQL hosted on Supabase.
 
 ## Folder structure
 
@@ -57,13 +59,21 @@ Describe how the repository is organized. Adjust the example below to the team's
 
 ### Prerequisites
 
-(language versions, package managers, databases, etc.)
+- Java 17.
+- A Supabase project with PostgreSQL access.
+- Database connection details from the Supabase dashboard. Keep credentials out of the repository.
 
 ### Back-end
 
-```bash
-# commands to install dependencies and start the back-end
+```powershell
+cd backend
+$env:SUPABASE_DB_URL = "jdbc:postgresql://<host>:<port>/<database>?sslmode=require"
+$env:SUPABASE_DB_USERNAME = "<username>"
+$env:SUPABASE_DB_PASSWORD = "<database-password>"
+.\mvnw.cmd spring-boot:run
 ```
+
+Use the host, port, database, and username shown under **Connect** in Supabase. Choose the connection option appropriate for your network; do not commit or share the database password.
 
 ### Front-end
 

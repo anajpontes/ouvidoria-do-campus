@@ -25,8 +25,8 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 - **Alternativas consideradas:** Java com Spring Boot; Python com FastAPI.
 - **Motivo:** o time já tem mais familiaridade com JavaScript, e o prazo de uma semana favorece uma stack na qual todos conseguem contribuir desde o primeiro dia.
 
-## [data] — [título da decisão]
+## 26/11/2026 — Banco de dados
 
-- **Decisão:**
-- **Alternativas consideradas:**
-- **Motivo:**
+- **Decisão:** usar PostgreSQL hospedado no Supabase como banco de dados do projeto.
+- **Alternativas consideradas:** a configuração local existente com SQLite.
+- **Motivo:** a equipe escolheu o Supabase para ter o banco do projeto hospedado e compartilhado.
