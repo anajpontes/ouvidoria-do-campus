@@ -59,4 +59,10 @@ Copy the template below whenever you need a new entry.
 
 - **Decision:** Use SQLite/JPA for local development until the teammate confirms the Supabase schema, then integrate with Supabase PostgreSQL through JPA. The complainant's email is required and is stored in a separate private follow-up entity, not in `Chamado`. Keep photo upload deferred until Supabase Storage is ready. Defer email-code delivery and tracking endpoints until an email provider and code lifecycle are agreed; defer secretary queue endpoints until Supabase Auth is integrated. Keep AI suggestion/review fields, but do not claim real AI classification until a provider is selected.
 - **Alternatives considered:** Wait for the database before all backend work, store email with staff-facing report data, save photos to local disk temporarily, or expose routes before their required email/authentication services exist.
-- **Rationale:** This allows safe local persistence work without coupling the backend to an unapproved schema or exposing private data, while avoiding a misleading submission, tracking, photo, AI, or staff-login flow.
+- **Rationale:** This allows safe local backend work without coupling to an unapproved schema or falsely claiming that tracking, photos, AI, or staff login are complete.
+
+## 27/11/2026 — Public report submission and private email encryption
+
+- **Decision:** Implement `POST /api/chamados` locally with JSON fields `title`, `description`, `location`, and required `email`. Return a random UUID protocol, initial status, and creation time, but never the email. Store the email separately using AES-GCM with a 32-byte Base64 key supplied through `FOLLOW_UP_EMAIL_ENCRYPTION_KEY`. Align the current private JPA mapping with the database branch's proposed schema, pending the database owner's approval.
+- **Alternatives considered:** Keep only the persistence service without an HTTP route, store the email in plaintext, or expose a staff-facing route before authentication is available.
+- **Rationale:** Provide a real, testable report-submission API while protecting the private email and keeping the implementation compatible with the current schema proposal. Code delivery/lookup, staff routes, photos, and real AI remain separate pending work.

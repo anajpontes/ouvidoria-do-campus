@@ -17,12 +17,15 @@ public class RegistrarChamadoService {
 
     private final ChamadoRepository chamadoRepository;
     private final AcompanhamentoPrivadoRepository acompanhamentoRepository;
+    private final EmailCipher emailCipher;
 
     public RegistrarChamadoService(
             ChamadoRepository chamadoRepository,
-            AcompanhamentoPrivadoRepository acompanhamentoRepository) {
+            AcompanhamentoPrivadoRepository acompanhamentoRepository,
+            EmailCipher emailCipher) {
         this.chamadoRepository = chamadoRepository;
         this.acompanhamentoRepository = acompanhamentoRepository;
+        this.emailCipher = emailCipher;
     }
 
     @Transactional
@@ -35,7 +38,7 @@ public class RegistrarChamadoService {
 
         AcompanhamentoPrivado acompanhamento = new AcompanhamentoPrivado();
         acompanhamento.setChamado(chamadoSalvo);
-        acompanhamento.setEmail(email);
+        acompanhamento.setEmailCifrado(emailCipher.encrypt(email));
         acompanhamentoRepository.save(acompanhamento);
 
         return chamadoSalvo;

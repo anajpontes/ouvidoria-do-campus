@@ -59,4 +59,10 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 
 - **Decisão:** Usar SQLite/JPA no desenvolvimento local até o colega confirmar o esquema do Supabase; depois, integrar ao PostgreSQL do Supabase via JPA. O e-mail do reclamante é obrigatório e será armazenado em uma entidade privada de acompanhamento, separada de `Chamado`. Adiar o upload de fotos até que o Supabase Storage esteja pronto. Adiar o envio de códigos e os endpoints de acompanhamento até definir o provedor de e-mail e o ciclo de vida do código; adiar os endpoints da secretaria até integrar o Supabase Auth. Manter os campos de sugestão/revisão da IA, mas não alegar classificação real por IA antes da escolha de um provedor.
 - **Alternativas consideradas:** Esperar o banco para iniciar todo o back-end, guardar o e-mail junto dos dados visíveis à secretaria, salvar fotos temporariamente no disco local ou publicar rotas sem os serviços de e-mail/autenticação necessários.
-- **Motivo:** Permitir o avanço seguro da persistência local sem acoplar o back-end a um esquema não aprovado nem expor dados privados, evitando fluxos falsos de envio, acompanhamento, foto, IA ou login da equipe.
+- **Motivo:** Permitir o avanço seguro do back-end local sem acoplar o projeto a um esquema não aprovado nem alegar que acompanhamento, fotos, IA ou login da equipe estão completos.
+
+## 27/11/2026 — Abertura pública de relatos e criptografia do e-mail
+
+- **Decisão:** Implementar localmente `POST /api/chamados` com JSON contendo `title`, `description`, `location` e `email` obrigatório. Retornar protocolo UUID aleatório, status inicial e data de criação, nunca o e-mail. Armazenar o e-mail separado usando AES-GCM com uma chave Base64 de 32 bytes fornecida por `FOLLOW_UP_EMAIL_ENCRYPTION_KEY`. Alinhar o mapeamento JPA privado à proposta da branch do banco, aguardando aprovação do responsável pelo esquema.
+- **Alternativas consideradas:** Manter somente o serviço de persistência sem rota HTTP, armazenar o e-mail em texto puro ou expor uma rota da secretaria antes de haver autenticação.
+- **Motivo:** Disponibilizar uma API real e testável para abertura de relatos, protegendo o e-mail privado e mantendo compatibilidade com a proposta atual de esquema. Envio/consulta de código, rotas da secretaria, fotos e IA real continuam como etapas separadas.

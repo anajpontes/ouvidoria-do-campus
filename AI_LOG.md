@@ -14,7 +14,7 @@ Copy the template below whenever you need a new entry.
 
 ## Tools
 
-- (e.g. ChatGPT, GitHub Copilot, Cursor, other)
+- GitHub Copilot.
 
 ## Entry template
 
@@ -41,3 +41,10 @@ Copy the template below whenever you need a new entry.
 - **What the AI generated:**
 - **What the team kept:**
 - **What the team corrected or rejected, and why:**
+
+### 27/11/2026 — Public report API and private email storage
+
+- **Main prompt:** Continue the backend so it can accept reports locally and later align with the teammate's Supabase database without exposing the complainant's email.
+- **What the AI generated:** A JSON submission endpoint, UUID protocol generation, JPA mapping aligned with the current schema proposal, AES-GCM email encryption using an environment key, and tests/documentation.
+- **What the team kept:** Local SQLite/JPA development, the required private email, and a response that omits the email.
+- **What the team corrected or rejected, and why:** Email-code delivery, staff endpoints, photo upload, and real AI classification remain deferred because their providers/policies or authentication are not yet approved. The proposed SQL was not executed and no Supabase credentials were added.

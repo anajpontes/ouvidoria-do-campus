@@ -14,7 +14,7 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 
 ## Ferramentas
 
-- (ex.: ChatGPT, GitHub Copilot, Cursor, outro)
+- GitHub Copilot.
 
 ## Modelo de registro
 
@@ -41,3 +41,10 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 - **O que a IA gerou:**
 - **O que o time aproveitou:**
 - **O que o time corrigiu ou rejeitou, e por quê:**
+
+### 27/11/2026 — API pública de relatos e e-mail privado
+
+- **Prompt principal:** Continuar o back-end para receber relatos localmente e depois alinhá-lo ao Supabase do colega sem expor o e-mail do reclamante.
+- **O que a IA gerou:** Uma rota JSON de abertura, geração de protocolo UUID, mapeamento JPA alinhado à proposta atual de esquema, criptografia AES-GCM do e-mail com chave de ambiente, além de testes e documentação.
+- **O que o time aproveitou:** Desenvolvimento local com SQLite/JPA, e-mail obrigatório privado e resposta da API sem o e-mail.
+- **O que o time corrigiu ou rejeitou, e por quê:** Envio/validação de código, rotas da secretaria, upload de fotos e classificação real por IA continuam adiados porque provedores/políticas ou autenticação ainda não foram aprovados. O SQL proposto não foi executado e nenhuma credencial do Supabase foi adicionada.
