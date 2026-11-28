@@ -18,6 +18,50 @@
     resolvido: "Resolvido"
   };
 
+  function initTheme() {
+    const storageKey = "ouvidoria-campus-theme";
+    const savedTheme = localStorage.getItem(storageKey);
+    const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    const theme = savedTheme === "dark" || savedTheme === "light" ? savedTheme : preferredTheme;
+
+    function applyTheme(nextTheme) {
+      document.documentElement.dataset.theme = nextTheme;
+      const metaTheme = document.querySelector('meta[name="theme-color"]');
+      if (metaTheme) {
+        metaTheme.content = nextTheme === "dark" ? "#0b171f" : "#f3f7fa";
+      }
+      const toggle = document.querySelector("[data-theme-toggle]");
+      if (toggle) {
+        const isDark = nextTheme === "dark";
+        toggle.textContent = isDark ? "☀" : "☾";
+        toggle.setAttribute("aria-label", isDark ? "Ativar modo claro" : "Ativar modo escuro");
+        toggle.setAttribute("title", isDark ? "Ativar modo claro" : "Ativar modo escuro");
+        toggle.setAttribute("aria-pressed", String(isDark));
+      }
+    }
+
+    applyTheme(theme);
+
+    const nav = document.querySelector(".header-nav");
+    if (!nav || nav.querySelector("[data-theme-toggle]")) {
+      return;
+    }
+
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "theme-toggle";
+    toggle.dataset.themeToggle = "";
+    nav.appendChild(toggle);
+
+    toggle.addEventListener("click", function () {
+      const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      localStorage.setItem(storageKey, nextTheme);
+      applyTheme(nextTheme);
+    });
+
+    applyTheme(document.documentElement.dataset.theme);
+  }
+
   function escapeHtml(value) {
     return String(value == null ? "" : value).replace(/[&<>"']/g, function (character) {
       return {
@@ -286,10 +330,17 @@
     });
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
+  function initializeApp() {
+    initTheme();
     initReportForm();
     initTracking();
     initTeamLogin();
     initQueue();
-  });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeApp);
+  } else {
+    initializeApp();
+  }
 }());

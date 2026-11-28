@@ -19,6 +19,21 @@
   text-rendering: optimizeLegibility;
 }
 
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #e8f1f7;
+  --muted: #adc0cd;
+  --brand: #64add5;
+  --brand-dark: #8cc9e8;
+  --brand-soft: #17384a;
+  --line: #395466;
+  --paper: #101f29;
+  --canvas: #0b171f;
+  --surface-muted: #1c3240;
+  --warm: #5a4020;
+  --accent: #f0a43a;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -1031,6 +1046,159 @@ button.logout-link:focus-visible {
   background: var(--brand-soft);
   box-shadow: none;
   transform: none;
+}
+
+.theme-toggle {
+  min-width: 44px;
+  min-height: 38px;
+  padding: 0 11px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: var(--paper);
+  font-size: 15px;
+  line-height: 1;
+}
+
+button.theme-toggle:hover,
+button.theme-toggle:focus-visible {
+  color: var(--ink);
+  background: var(--brand-soft);
+  box-shadow: none;
+  transform: none;
+}
+
+:root[data-theme="dark"] .site-header {
+  border-bottom-color: var(--line);
+  background: #10222d;
+  box-shadow: 0 4px 17px rgb(0 0 0 / 28%);
+}
+
+:root[data-theme="dark"] .brand-separator,
+:root[data-theme="dark"] .form-footer,
+:root[data-theme="dark"] .ticket-review,
+:root[data-theme="dark"] .tracking-meta,
+:root[data-theme="dark"] .verification-form {
+  border-color: var(--line);
+}
+
+:root[data-theme="dark"] .nav-link.active {
+  color: #091820;
+  background: #75badd;
+}
+
+:root[data-theme="dark"] .intro,
+:root[data-theme="dark"] .form-card,
+:root[data-theme="dark"] .tracking-result,
+:root[data-theme="dark"] .queue-panel,
+:root[data-theme="dark"] .ticket-card,
+:root[data-theme="dark"] .summary-card,
+:root[data-theme="dark"] .feedback,
+:root[data-theme="dark"] .verification-step,
+:root[data-theme="dark"] .empty-state {
+  border-color: var(--line);
+  color: var(--ink);
+  background: #162b37;
+  box-shadow: 0 12px 28px rgb(0 0 0 / 18%);
+}
+
+:root[data-theme="dark"] .intro {
+  background: linear-gradient(115deg, #17394a 0%, #1d4a60 100%);
+}
+
+:root[data-theme="dark"] .response-note,
+:root[data-theme="dark"] .privacy-note,
+:root[data-theme="dark"] .verification-step,
+:root[data-theme="dark"] .verification-step.current {
+  border-color: var(--line);
+  color: var(--muted);
+  background: #17394a;
+}
+
+:root[data-theme="dark"] .follow-up,
+:root[data-theme="dark"] .demo-credentials,
+:root[data-theme="dark"] .suggestion-note,
+:root[data-theme="dark"] .demo-banner,
+:root[data-theme="dark"] .protocol-value,
+:root[data-theme="dark"] .response-box {
+  border-color: #6b5538;
+  color: #f3d2a3;
+  background: #493721;
+}
+
+:root[data-theme="dark"] .follow-up p,
+:root[data-theme="dark"] .privacy-note,
+:root[data-theme="dark"] .demo-credentials,
+:root[data-theme="dark"] .response-note p,
+:root[data-theme="dark"] .ticket-description,
+:root[data-theme="dark"] .response-box {
+  color: var(--muted);
+}
+
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] textarea,
+:root[data-theme="dark"] select {
+  border-color: var(--line);
+  color: var(--ink);
+  background: #0f202a;
+}
+
+:root[data-theme="dark"] input::placeholder,
+:root[data-theme="dark"] textarea::placeholder {
+  color: #829baa;
+}
+
+:root[data-theme="dark"] .file-input::file-selector-button,
+:root[data-theme="dark"] .button-secondary,
+:root[data-theme="dark"] .status-badge,
+:root[data-theme="dark"] .demo-pill {
+  border-color: var(--line);
+  color: var(--ink);
+  background: #1d3948;
+}
+
+:root[data-theme="dark"] .status-badge.recebido {
+  color: #ffd6a1;
+  background: #60411f;
+}
+
+:root[data-theme="dark"] .status-badge.em-andamento {
+  color: #ffc2bd;
+  background: #5a2d31;
+}
+
+:root[data-theme="dark"] .status-badge.resolvido {
+  color: #abe2c3;
+  background: #205139;
+}
+
+:root[data-theme="dark"] .summary-card,
+:root[data-theme="dark"] .queue-panel {
+  background: #162b37;
+}
+
+:root[data-theme="dark"] .summary-card:nth-child(2),
+:root[data-theme="dark"] .ticket-card:nth-child(3n + 2) {
+  background: #3a3023;
+}
+
+:root[data-theme="dark"] .summary-card:nth-child(3),
+:root[data-theme="dark"] .ticket-card:nth-child(3n) {
+  background: #243640;
+}
+
+:root[data-theme="dark"] .ticket-card {
+  background: #1a303c;
+}
+
+:root[data-theme="dark"] .feedback.success {
+  border-color: #3f7188;
+  background: #1d3d4d;
+}
+
+:root[data-theme="dark"] .feedback.error {
+  border-color: #81483d;
+  color: #ffc1b5;
+  background: #4a2a27;
 }
 
 @media (max-width: 760px) {
