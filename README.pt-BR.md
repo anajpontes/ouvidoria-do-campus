@@ -65,15 +65,17 @@ Descrevam a organização do repositório. Ajustem o exemplo abaixo à escolha d
 
 ### Back-end
 
+Copie `backend/.env.example` para `backend/.env` e preencha `SUPABASE_DB_PASSWORD` e
+`FOLLOW_UP_EMAIL_ENCRYPTION_KEY` no arquivo local. A chave de criptografia deve estar
+em Base64 e decodificar para 32 bytes. Mantenha a mesma chave para acessar e-mails já
+cifrados. O `.env` é ignorado pelo Git; não o faça commit nem o compartilhe.
+
 ```powershell
 cd backend
-$env:SUPABASE_DB_URL = "jdbc:postgresql://aws-1-us-east-2.pooler.supabase.com:5432/postgres?sslmode=require"
-$env:SUPABASE_DB_USERNAME = "postgres.ccnrgujttgtebecizhij"
-$env:SUPABASE_DB_PASSWORD = "<senha-do-banco>"
 .\mvnw.cmd spring-boot:run
 ```
 
-Esses dados correspondem ao **Session Pooler** exibido em **Connect** no projeto Supabase da equipe e atendem a redes IPv4. A URL e o usuário já têm valores padrão em `application.properties`; mantenha as atribuições acima se quiser explicitar a configuração. Informe a senha do banco somente no terminal local. Não a envie pelo chat nem faça commit dela.
+O Spring Boot carrega o `.env` local ao iniciar dentro da pasta `backend`. A URL e o usuário do **Session Pooler** do Supabase já têm valores padrão em `application.properties`; use variáveis de ambiente para substituí-los somente se os dados de conexão forem diferentes.
 
 Antes de iniciar o backend pela primeira vez, confira no Table Editor se as tabelas já existem. Se estiverem ausentes, execute uma única vez a migration aprovada em [docs/sql/001_create_ouvidoria_tables.sql](docs/sql/001_create_ouvidoria_tables.sql) pelo SQL Editor do Supabase. O Hibernate está em modo `validate` e não cria nem altera tabelas.
 
