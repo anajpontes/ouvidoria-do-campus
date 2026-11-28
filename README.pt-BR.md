@@ -34,7 +34,9 @@ Ouvidoria do campus — vida no campus e comunidade
 
 ## Stack
 
-(linguagens, frameworks e bibliotecas; o back-end pode ser Java, Python ou Node.js, isolados ou combinados, desde que integrados; o front-end é obrigatório — web, desktop ou mobile)
+- Back-end: Java 17 e Spring Boot.
+- Front-end: HTML e CSS.
+- Banco de dados: PostgreSQL hospedado no Supabase.
 
 ## Estrutura de pastas
 
@@ -57,13 +59,25 @@ Descrevam a organização do repositório. Ajustem o exemplo abaixo à escolha d
 
 ### Pré-requisitos
 
-(versões de linguagem, gerenciadores de pacote, banco de dados etc.)
+- Java 17.
+- Um projeto Supabase com acesso ao PostgreSQL.
+- Dados de conexão disponíveis no painel do Supabase. Não mantenha credenciais no repositório.
 
 ### Back-end
 
-```bash
-# comandos para instalar dependências e subir o back-end
+Copie `backend/.env.example` para `backend/.env` e preencha `SUPABASE_DB_PASSWORD` e
+`FOLLOW_UP_EMAIL_ENCRYPTION_KEY` no arquivo local. A chave de criptografia deve estar
+em Base64 e decodificar para 32 bytes. Mantenha a mesma chave para acessar e-mails já
+cifrados. O `.env` é ignorado pelo Git; não o faça commit nem o compartilhe.
+
+```powershell
+cd backend
+.\mvnw.cmd spring-boot:run
 ```
+
+O Spring Boot carrega o `.env` local ao iniciar dentro da pasta `backend`. A URL e o usuário do **Session Pooler** do Supabase já têm valores padrão em `application.properties`; use variáveis de ambiente para substituí-los somente se os dados de conexão forem diferentes.
+
+Antes de iniciar o backend pela primeira vez, confira no Table Editor se as tabelas já existem. Se estiverem ausentes, execute uma única vez a migration aprovada em [docs/sql/001_create_ouvidoria_tables.sql](docs/sql/001_create_ouvidoria_tables.sql) pelo SQL Editor do Supabase. O Hibernate está em modo `validate` e não cria nem altera tabelas.
 
 ### Front-end
 
