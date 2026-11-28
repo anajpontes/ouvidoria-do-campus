@@ -28,6 +28,12 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 
 ## Registro
 
+### 27/11/2026 — Adicionar acompanhamento de reclamações para a demonstração escolar
+- **Prompt principal:** "Use o código padrão fixo `xy1234XY` para acompanhar os relatos enviados."
+- **O que a IA gerou:** uma consulta no backend que exige protocolo e código compartilhado, além do formulário de acompanhamento que mostra status e resposta da equipe.
+- **O que o time aproveitou:** o código é identificado como compartilhado e exclusivo da demonstração; a resposta não expõe descrição do relato nem e-mail de contato.
+- **O que o time corrigiu ou rejeitou, e por quê:** o envio de códigos por e-mail não foi incluído porque nenhum provedor foi escolhido; o código fixo não deve proteger dados sensíveis nem dados de produção.
+
 ### 27/11/2026 — Reduzir a largura do aviso de demonstração
 - **Prompt principal:** "Diminua a largura do aviso de demonstração local."
 - **O que a IA gerou:** um aviso centralizado com largura máxima de 760 px e margens responsivas.
@@ -126,3 +132,9 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 - **O que a IA gerou:** Uma rota JSON de abertura, geração de protocolo UUID, mapeamento JPA alinhado à proposta atual de esquema, criptografia AES-GCM do e-mail com chave de ambiente, além de testes e documentação.
 - **O que o time aproveitou:** A rota `POST /api/chamados`, o protocolo UUID, o e-mail obrigatório armazenado separadamente com AES-GCM e uma resposta sem esse dado. O banco da aplicação foi integrado ao PostgreSQL do Supabase; os testes usam H2 isolado.
 - **O que o time corrigiu ou rejeitou, e por quê:** A configuração SQLite inicial foi substituída pelo Supabase conforme decisão da equipe. Envio/validação de código, rotas da secretaria, upload de fotos e classificação real por IA continuam adiados porque provedores/políticas ou autenticação ainda não foram aprovados. Credenciais reais não foram adicionadas ao repositório.
+
+### 27/11/2026 — Conectar o formulário de relatos ao backend
+- **Prompt principal:** "Tire o mock do front e conecte ao backend, faça toda integração."
+- **O que a IA gerou:** envio JSON real do formulário para `POST /api/chamados`, configuração de CORS para desenvolvimento local e avisos claros para funções sem endpoints no backend.
+- **O que o time aproveitou:** o fluxo suportado de abertura de relatos, o protocolo retornado pela API e avisos explícitos para acompanhamento, acesso da equipe, envio de e-mail e upload de fotos ainda indisponíveis.
+- **O que o time corrigiu ou rejeitou, e por quê:** os registros simulados e credenciais fictícias foram removidos em vez de apresentar funcionalidades sem suporte como reais; não foram inventados provedores de autenticação, e-mail, armazenamento ou IA.

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f3f7fa">
-  <meta name="description" content="Fila simulada de relatos da Ouvidoria do Campus.">
+  <meta name="description" content="Informações sobre a fila da equipe da Ouvidoria do Campus.">
   <title>Ouvidoria do Campus | Fila da equipe</title>
   <link rel="stylesheet" href="styles.css?v=2">
 </head>
@@ -18,97 +18,31 @@
     <nav class="header-nav" aria-label="Navegação principal">
       <a class="nav-link" href="index.html">Novo relato</a>
       <a class="nav-link" href="consulta.html">Acompanhar</a>
-      <a class="nav-link active" href="fila.html" aria-current="page">Equipe · demo</a>
-      <button class="nav-link logout-link" id="logout-button" type="button">Sair</button>
+      <a class="nav-link active" href="equipe-login.html" aria-current="page">Equipe</a>
     </nav>
   </header>
 
-  <div class="demo-banner" role="note">Acesso demonstrativo: autenticação apenas simulada nesta sessão do navegador. Não protege dados reais.</div>
+  <div class="status-banner" role="status">A fila da equipe está indisponível: autenticação e endpoints administrativos ainda não foram implementados.</div>
 
   <main class="queue-main">
     <section class="intro" aria-labelledby="page-title">
-      <p class="eyebrow"><span aria-hidden="true"></span> Visão da equipe · demonstração</p>
+      <p class="eyebrow"><span aria-hidden="true"></span> Área da equipe</p>
       <h1 id="page-title">Fila de relatos</h1>
-      <p class="intro-copy">Revise as sugestões simuladas, organize os chamados e registre uma resposta curta. Nenhuma alteração é enviada ao back-end.</p>
+      <p class="intro-copy">A fila só poderá ser exibida após a equipe definir a autenticação e a API de administração.</p>
     </section>
 
-    <section class="queue-summary" aria-label="Resumo da fila">
-      <article class="summary-card">
-        <span class="summary-label">Total de relatos</span>
-        <strong id="total-count">0</strong>
-      </article>
-      <article class="summary-card">
-        <span class="summary-label">Recebidos</span>
-        <strong id="received-count">0</strong>
-      </article>
-      <article class="summary-card">
-        <span class="summary-label">Em andamento</span>
-        <strong id="progress-count">0</strong>
-      </article>
-      <article class="summary-card">
-        <span class="summary-label">Resolvidos</span>
-        <strong id="resolved-count">0</strong>
-      </article>
-    </section>
-
-    <section class="queue-panel" aria-labelledby="filters-title">
-      <div class="queue-panel-heading">
-        <div>
-          <p class="step-label">ORGANIZAÇÃO</p>
-          <h2 id="filters-title">Filtrar relatos</h2>
-        </div>
-        <span class="demo-pill">Dados fictícios</span>
-      </div>
-      <form class="filter-form" id="filter-form">
-        <div class="field">
-          <label for="filter-status">Status</label>
-          <select id="filter-status" name="status">
-            <option value="">Todos</option>
-            <option value="recebido">Recebido</option>
-            <option value="em andamento">Em andamento</option>
-            <option value="resolvido">Resolvido</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="filter-type">Tipo</label>
-          <select id="filter-type" name="type">
-            <option value="">Todos</option>
-            <option value="Equipamento de sala">Equipamento de sala</option>
-            <option value="Elétrico">Elétrico</option>
-            <option value="Limpeza">Limpeza</option>
-            <option value="Acessibilidade">Acessibilidade</option>
-            <option value="Hidráulica">Hidráulica</option>
-            <option value="Sem classificação">Sem classificação</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="filter-priority">Prioridade</label>
-          <select id="filter-priority" name="priority">
-            <option value="">Todas</option>
-            <option value="Alta">Alta</option>
-            <option value="Média">Média</option>
-            <option value="Baixa">Baixa</option>
-            <option value="Não definida">Não definida</option>
-          </select>
-        </div>
-        <button class="button-secondary" type="reset">Limpar filtros</button>
-      </form>
-    </section>
-
-    <section class="queue-results" aria-labelledby="results-title">
-      <div class="results-heading">
-        <h2 id="results-title">Relatos <span id="visible-count"></span></h2>
-        <span class="field-hint">E-mails dos reclamantes não são exibidos nesta fila.</span>
-      </div>
-      <div class="queue-list" id="queue-list" aria-live="polite"></div>
+    <section class="form-card" aria-labelledby="queue-status-title">
+      <p class="step-label">PRÓXIMA ETAPA</p>
+      <h2 id="queue-status-title">Aguardando autenticação e API administrativa</h2>
+      <p class="intro-copy">Nenhum relato ou dado fictício é exibido aqui. O endpoint atual permite somente a abertura pública de relatos.</p>
+      <a class="button-link" href="equipe-login.html">Voltar ao acesso da equipe</a>
     </section>
   </main>
 
   <footer class="site-footer">
     <span>Ouvidoria do Campus</span>
-    <span>Ambiente local de demonstração — não usar com dados reais.</span>
+    <span>A fila será habilitada após a integração segura do back-end.</span>
   </footer>
-  <script src="mock-api.js" defer></script>
-  <script src="app.js?v=2" defer></script>
+  <script src="app.js?v=3" defer></script>
 </body>
 </html>

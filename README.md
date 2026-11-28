@@ -35,7 +35,7 @@ Campus infrastructure desk (Ouvidoria do campus) — campus life and community
 ## Stack
 
 - Back-end: Java 17 and Spring Boot.
-- Front-end: HTML and CSS.
+- Front-end: HTML, CSS, and vanilla JavaScript.
 - Database: PostgreSQL hosted on Supabase.
 
 ## Folder structure
@@ -76,14 +76,19 @@ cd backend
 ```
 
 Spring Boot loads the local `.env` file when starting from the `backend` directory. The Supabase **Session Pooler** URL and username have defaults in `application.properties`; override them with environment variables only if your connection details differ.
+The API allows requests from `http://localhost:4173` by default. Set `FRONTEND_ORIGIN` if the front-end is served from a different origin.
 
 Before starting the backend for the first time, check the Table Editor to see whether the tables already exist. If they are absent, run the approved migration in [docs/sql/001_create_ouvidoria_tables.sql](docs/sql/001_create_ouvidoria_tables.sql) once from the Supabase SQL Editor. Hibernate is set to `validate` and will not create or alter tables.
 
 ### Front-end
 
-```bash
-# commands to install dependencies and start the front-end
+From the repository root, run:
+
+```powershell
+python -m http.server 4173 --directory frontend
 ```
+
+Open <http://localhost:4173>. The API base URL is set in the `api-base-url` meta tag on the front-end pages. Reports are submitted to the real backend, and claimants can query status and staff response with the protocol and the shared demo code `xy1234XY`. This shared code is for the school demo only and must not protect sensitive or production data. Email delivery and staff tools remain unavailable.
 
 ## CI/CD
 

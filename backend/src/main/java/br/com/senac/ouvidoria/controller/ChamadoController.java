@@ -1,6 +1,7 @@
 package br.com.senac.ouvidoria.controller;
 
 import br.com.senac.ouvidoria.model.Chamado;
+import br.com.senac.ouvidoria.service.ConsultarChamadoService;
 import br.com.senac.ouvidoria.service.RegistrarChamadoService;
 import jakarta.validation.Valid;
 import java.util.UUID;
@@ -16,9 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class ChamadoController {
 
     private final RegistrarChamadoService registrarChamadoService;
+    private final ConsultarChamadoService consultarChamadoService;
 
-    public ChamadoController(RegistrarChamadoService registrarChamadoService) {
+    public ChamadoController(
+            RegistrarChamadoService registrarChamadoService,
+            ConsultarChamadoService consultarChamadoService) {
         this.registrarChamadoService = registrarChamadoService;
+        this.consultarChamadoService = consultarChamadoService;
     }
 
     @PostMapping
@@ -34,5 +39,24 @@ public class ChamadoController {
         ChamadoCriadoResponse response = new ChamadoCriadoResponse(
                 criado.getProtocolo(), criado.getStatus(), criado.getCreatedAt());
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @PostMapping("/consulta")
+    public ResponseEntity<AcompanhamentoChamadoResponse> consultar(
+            @Valid @RequestBody ConsultarChamadoRequest request) {
+        var encontrado = consultarChamadoService.consultar(
+                request.protocol().strip(), request.accessCode().strip());
+        if (encontrado.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Chamado chamado = encontrado.get();
+        AcompanhamentoChamadoResponse response = new AcompanhamentoChamadoResponse(
+                chamado.getProtocolo(),
+                chamado.getStatus(),
+                chamado.getCreatedAt(),
+                chamado.getUpdatedAt(),
+                chamado.getRespostaEquipe());
+        return ResponseEntity.ok(response);
     }
 }

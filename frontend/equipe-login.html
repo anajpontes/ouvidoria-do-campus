@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f3f7fa">
-  <meta name="description" content="Acesso demonstrativo à fila da equipe da Ouvidoria do Campus.">
+  <meta name="description" content="Informações sobre o acesso da equipe da Ouvidoria do Campus.">
   <title>Ouvidoria do Campus | Acesso da equipe</title>
   <link rel="stylesheet" href="styles.css?v=2">
 </head>
@@ -18,57 +18,36 @@
     <nav class="header-nav" aria-label="Navegação principal">
       <a class="nav-link" href="index.html">Novo relato</a>
       <a class="nav-link" href="consulta.html">Acompanhar</a>
-      <a class="nav-link active" href="equipe-login.html" aria-current="page">Equipe · demo</a>
+      <a class="nav-link active" href="equipe-login.html" aria-current="page">Equipe</a>
     </nav>
   </header>
 
-  <div class="demo-banner" role="note">Login fictício para demonstração local. Não use credenciais reais; este formulário não oferece segurança de produção.</div>
+  <div class="status-banner" role="status">O acesso da equipe está indisponível: ainda não há autenticação real configurada.</div>
 
   <main class="login-main">
     <section class="intro" aria-labelledby="page-title">
       <p class="eyebrow"><span aria-hidden="true"></span> Área da equipe</p>
       <h1 id="page-title">Acesso à fila</h1>
-      <p class="intro-copy">Entre com as credenciais de demonstração para abrir a fila simulada de relatos.</p>
+      <p class="intro-copy">A fila será disponibilizada após a integração com o serviço de autenticação aprovado pela equipe.</p>
     </section>
 
     <section class="form-card login-card" aria-labelledby="login-title">
       <div class="card-heading">
         <div>
-          <p class="step-label">DEMONSTRAÇÃO</p>
-          <h2 id="login-title">Entrar na equipe</h2>
+          <p class="step-label">ACESSO RESTRITO</p>
+          <h2 id="login-title">Login ainda não disponível</h2>
         </div>
       </div>
 
-      <div class="demo-credentials" role="note">
-        <strong>Credenciais fictícias</strong>
-        <span>Usuário: <code>secretaria@demo.local</code></span>
-        <span>Senha: <code>campus123</code></span>
-      </div>
-
-      <form id="team-login-form">
-        <div class="field">
-          <label for="username">Usuário <span aria-hidden="true">*</span></label>
-          <input id="username" name="username" type="email" autocomplete="username" value="secretaria@demo.local" required>
-        </div>
-        <div class="field">
-          <label for="password">Senha <span aria-hidden="true">*</span></label>
-          <input id="password" name="password" type="password" autocomplete="current-password" required>
-        </div>
-        <div class="form-footer">
-          <p>Somente para a demonstração</p>
-          <button type="submit">Entrar</button>
-        </div>
-      </form>
-
-      <div class="feedback" id="login-result" aria-live="polite" hidden></div>
+      <p class="intro-copy">Não há credenciais de demonstração nem login funcional. Nenhum dado da fila é exibido nesta página.</p>
+      <a class="button-link" href="index.html">Voltar ao formulário</a>
     </section>
   </main>
 
   <footer class="site-footer">
     <span>Ouvidoria do Campus</span>
-    <span>Login demonstrativo — sem autenticação real.</span>
+    <span>A autenticação da equipe ainda não está habilitada.</span>
   </footer>
-  <script src="mock-api.js" defer></script>
-  <script src="app.js?v=2" defer></script>
+  <script src="app.js?v=3" defer></script>
 </body>
 </html>

@@ -28,6 +28,12 @@ Copy the template below whenever you need a new entry.
 
 ## Log
 
+### 2026-11-27 — Add school-demo complaint tracking
+- **Main prompt:** "Use the fixed default code `xy1234XY` so submitted reports can be tracked."
+- **What the AI generated:** a backend lookup requiring both protocol and the shared demo code, plus a front-end tracking form that shows status and staff response.
+- **What the team kept:** the code is clearly labeled as shared and demo-only; the response excludes report description and contact email.
+- **What the team corrected or rejected, and why:** email verification was not added because no email provider was selected; the fixed code must not protect sensitive or production data.
+
 ### 2026-11-27 — Reduce the width of the demo notice
 - **Main prompt:** "Reduce the width of the local demo notice."
 - **What the AI generated:** a centered notice with a 760 px maximum width and responsive side margins.
@@ -126,3 +132,9 @@ Copy the template below whenever you need a new entry.
 - **What the AI generated:** A JSON submission endpoint, UUID protocol generation, JPA mapping aligned with the current schema proposal, AES-GCM email encryption using an environment key, and tests/documentation.
 - **What the team kept:** The `POST /api/chamados` route, UUID protocol, required email stored separately with AES-GCM, and a response that omits the email. The application's database is integrated with Supabase PostgreSQL; tests use isolated H2.
 - **What the team corrected or rejected, and why:** The initial SQLite configuration was replaced with Supabase per the team's decision. Email-code delivery, staff endpoints, photo upload, and real AI classification remain deferred because their providers/policies or authentication are not yet approved. Real credentials were not added to the repository.
+
+### 2026-11-27 — Connect the report form to the backend
+- **Main prompt:** "Remove the mock from the front end and connect it to the backend; complete the integration."
+- **What the AI generated:** a real JSON submission from the front-end to `POST /api/chamados`, CORS configuration for local development, and clear states for features without backend endpoints.
+- **What the team kept:** the supported report-creation flow, the API-returned protocol, and explicit notices for tracking, staff access, email delivery, and photo upload that are not implemented.
+- **What the team corrected or rejected, and why:** removed local mock records and fake credentials instead of presenting unsupported features as real; did not invent authentication, email, storage, or AI providers.

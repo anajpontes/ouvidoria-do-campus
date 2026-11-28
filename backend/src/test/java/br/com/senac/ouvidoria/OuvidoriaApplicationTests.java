@@ -18,7 +18,9 @@ import org.springframework.transaction.annotation.Transactional;
 import tools.jackson.databind.ObjectMapper;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.options;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -34,7 +36,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 		"spring.datasource.driver-class-name=org.h2.Driver",
 		"spring.datasource.username=sa",
 		"spring.datasource.password=",
-		"spring.jpa.hibernate.ddl-auto=create-drop"
+		"spring.jpa.hibernate.ddl-auto=create-drop",
+		"app.follow-up.access-code=xy1234XY"
 })
 @AutoConfigureMockMvc
 class OuvidoriaApplicationTests {
@@ -139,6 +142,73 @@ class OuvidoriaApplicationTests {
 				.andExpect(status().isBadRequest());
 
 		assertEquals(countBefore, chamadoRepository.count());
+	}
+
+	@Test
+	@Transactional
+	void followUpReturnsStatusAndTeamResponseForMatchingProtocolAndCode() throws Exception {
+		Chamado chamado = novoChamado("TEST-FOLLOW-UP-001");
+		chamado.setRespostaEquipe("A equipe está avaliando o relato.");
+		registrarChamadoService.registrar(chamado, "reclamante@example.com");
+		entityManager.flush();
+
+		mockMvc.perform(post("/api/chamados/consulta")
+						.contentType(APPLICATION_JSON)
+						.content("""
+								{
+								  "protocol": "TEST-FOLLOW-UP-001",
+								  "accessCode": "xy1234XY"
+								}
+								"""))
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("$.protocol").value("TEST-FOLLOW-UP-001"))
+				.andExpect(jsonPath("$.status").value("RECEBIDO"))
+				.andExpect(jsonPath("$.createdAt").isNotEmpty())
+				.andExpect(jsonPath("$.updatedAt").isNotEmpty())
+				.andExpect(jsonPath("$.teamResponse").value("A equipe está avaliando o relato."))
+				.andExpect(jsonPath("$.description").doesNotExist())
+				.andExpect(jsonPath("$.email").doesNotExist());
+	}
+
+	@Test
+	@Transactional
+	void followUpRejectsIncorrectAccessCodeWithoutDisclosingReport() throws Exception {
+		Chamado chamado = novoChamado("TEST-FOLLOW-UP-002");
+		registrarChamadoService.registrar(chamado, "reclamante@example.com");
+
+		mockMvc.perform(post("/api/chamados/consulta")
+						.contentType(APPLICATION_JSON)
+						.content("""
+								{
+								  "protocol": "TEST-FOLLOW-UP-002",
+								  "accessCode": "wrong-code"
+								}
+								"""))
+				.andExpect(status().isNotFound());
+	}
+
+	@Test
+	void followUpReturnsNotFoundForUnknownProtocol() throws Exception {
+		mockMvc.perform(post("/api/chamados/consulta")
+						.contentType(APPLICATION_JSON)
+						.content("""
+								{
+								  "protocol": "UNKNOWN-PROTOCOL",
+								  "accessCode": "xy1234XY"
+								}
+								"""))
+				.andExpect(status().isNotFound());
+	}
+
+	@Test
+	void allowsFrontendOriginToSubmitReports() throws Exception {
+		mockMvc.perform(options("/api/chamados")
+						.header("Origin", "http://localhost:4173")
+						.header("Access-Control-Request-Method", "POST")
+						.header("Access-Control-Request-Headers", "content-type"))
+				.andExpect(status().isOk())
+				.andExpect(header().string("Access-Control-Allow-Origin", "http://localhost:4173"))
+				.andExpect(header().exists("Access-Control-Allow-Methods"));
 	}
 
 	@Test

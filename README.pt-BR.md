@@ -35,7 +35,7 @@ Ouvidoria do campus — vida no campus e comunidade
 ## Stack
 
 - Back-end: Java 17 e Spring Boot.
-- Front-end: HTML e CSS.
+- Front-end: HTML, CSS e JavaScript sem frameworks.
 - Banco de dados: PostgreSQL hospedado no Supabase.
 
 ## Estrutura de pastas
@@ -76,14 +76,19 @@ cd backend
 ```
 
 O Spring Boot carrega o `.env` local ao iniciar dentro da pasta `backend`. A URL e o usuário do **Session Pooler** do Supabase já têm valores padrão em `application.properties`; use variáveis de ambiente para substituí-los somente se os dados de conexão forem diferentes.
+A API aceita requisições de `http://localhost:4173` por padrão. Defina `FRONTEND_ORIGIN` se o front-end for servido de outra origem.
 
 Antes de iniciar o backend pela primeira vez, confira no Table Editor se as tabelas já existem. Se estiverem ausentes, execute uma única vez a migration aprovada em [docs/sql/001_create_ouvidoria_tables.sql](docs/sql/001_create_ouvidoria_tables.sql) pelo SQL Editor do Supabase. O Hibernate está em modo `validate` e não cria nem altera tabelas.
 
 ### Front-end
 
-```bash
-# comandos para instalar dependências e subir o front-end
+Na raiz do repositório, execute:
+
+```powershell
+python -m http.server 4173 --directory frontend
 ```
+
+Abra <http://localhost:4173>. A URL base da API está na meta tag `api-base-url` das páginas do front-end. Os relatos são enviados ao backend real, e o reclamante pode consultar o status e a resposta da equipe usando o protocolo e o código compartilhado de demonstração `xy1234XY`. Esse código é somente para o trabalho escolar e não deve proteger dados sensíveis ou de produção. O envio de e-mail e as ferramentas da equipe continuam indisponíveis.
 
 ## CI/CD
 

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f3f7fa">
   <meta name="description" content="Relate problemas de infraestrutura do campus à Ouvidoria do Campus.">
+  <meta name="api-base-url" content="http://localhost:8080">
   <title>Ouvidoria do Campus | Novo relato</title>
   <link rel="stylesheet" href="styles.css?v=2">
 </head>
@@ -18,11 +19,11 @@
     <nav class="header-nav" aria-label="Navegação principal">
       <a class="nav-link active" href="index.html" aria-current="page">Novo relato</a>
       <a class="nav-link" href="consulta.html">Acompanhar</a>
-      <a class="nav-link" href="equipe-login.html">Equipe · demo</a>
+      <a class="nav-link" href="equipe-login.html">Equipe</a>
     </nav>
   </header>
 
-  <div class="demo-banner" role="note">Demonstração local: dados e ações são simulados. Não informe dados pessoais reais.</div>
+  <div class="status-banner" role="note">Os relatos são registrados no sistema. Nesta demonstração escolar, o acompanhamento usa o protocolo e o código padrão compartilhado.</div>
 
   <main id="inicio">
     <section class="intro" aria-labelledby="page-title">
@@ -31,7 +32,7 @@
       <p class="intro-copy">Conte para a gente. Seu relato ajuda a equipe do campus a entender e encaminhar o que precisa ser cuidado.</p>
       <div class="response-note">
         <span class="note-icon" aria-hidden="true">i</span>
-        <p>Este canal é para problemas de infraestrutura do campus. A equipe responsável recebe os relatos e acompanha cada solicitação.</p>
+        <p>Este canal é para problemas de infraestrutura do campus. O sistema registra o relato para encaminhamento à equipe responsável.</p>
       </div>
     </section>
 
@@ -61,25 +62,19 @@
           <input id="location" name="location" type="text" placeholder="Ex.: Bloco B, sala 12" required>
         </div>
 
-        <div class="field">
-          <label for="photo">Foto <span class="optional">(opcional)</span></label>
-          <input class="file-input" id="photo" name="photo" type="file" accept="image/*">
-          <span class="field-hint">Se possível, anexe uma imagem que ajude a mostrar o problema.</span>
-        </div>
-
         <fieldset class="follow-up">
-          <legend>Como podemos enviar seu protocolo?</legend>
-          <p>Informe seu e-mail para receber o protocolo e acompanhar as atualizações. O e-mail será usado somente para acompanhamento, ficará oculto para a secretaria e não será exibido à equipe que analisa os relatos.</p>
+          <legend>E-mail para contato e acompanhamento futuro</legend>
+          <p>O e-mail será armazenado separadamente e criptografado. Ele não será enviado; o acompanhamento usa o protocolo e o código padrão da demonstração.</p>
           <label for="email">E-mail <span aria-hidden="true">*</span></label>
           <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" required>
-          <span class="field-hint">Para consultar o relato nesta tela, será necessário confirmar um código enviado para este e-mail.</span>
+          <span class="field-hint">Guarde o protocolo exibido após o envio. O código padrão para acompanhar é xy1234XY.</span>
         </fieldset>
 
         <div class="form-footer">
           <p><span aria-hidden="true">*</span> Campos obrigatórios</p>
           <button type="submit">Enviar relato</button>
         </div>
-        <p class="availability-note">No protótipo, o relato fica salvo apenas nesta sessão do navegador. O e-mail e a foto não são enviados.</p>
+        <p class="availability-note">O relato será gravado no banco. O acompanhamento é uma demonstração escolar com código compartilhado; e-mail e upload de fotos não estão disponíveis.</p>
       </form>
       <div class="feedback" id="report-result" aria-live="polite" hidden></div>
     </section>
@@ -89,7 +84,6 @@
     <span>Ouvidoria do Campus</span>
     <span>Um campus melhor começa com a escuta.</span>
   </footer>
-  <script src="mock-api.js" defer></script>
-  <script src="app.js?v=2" defer></script>
+  <script src="app.js?v=3" defer></script>
 </body>
 </html>

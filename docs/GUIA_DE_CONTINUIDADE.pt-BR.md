@@ -25,20 +25,21 @@ Não acrescentem funcionalidades fora do MVP sem decisão explícita da equipe.
 - O front-end deve consumir a API real do back-end. Modos de demonstração podem usar dados simulados se estiverem claramente identificados como fictícios; não inventem endpoints nem apresentem dados simulados como reais.
 - Não adicionem frameworks ou dependências sem aprovação da equipe.
 
-O back-end Spring Boot já disponibiliza `POST /api/chamados`, que recebe `title`, `description`, `location` e `email`, e retorna protocolo, status inicial e data de criação sem expor o e-mail. O e-mail é armazenado separadamente e criptografado com AES-GCM. A conexão PostgreSQL usa as variáveis de ambiente `SUPABASE_DB_URL`, `SUPABASE_DB_USERNAME` e `SUPABASE_DB_PASSWORD`; não versionem credenciais. O front-end ainda usa `frontend/mock-api.js`; confirmem o contrato, o tratamento de erros e a configuração de CORS antes de substituir o mock pela API real.
+O back-end Spring Boot disponibiliza `POST /api/chamados`, que recebe `title`, `description`, `location` e `email`, e retorna protocolo, status inicial e data de criação sem expor o e-mail. O e-mail é armazenado separadamente e criptografado com AES-GCM. O formulário em `frontend/index.html` já envia para essa API; a URL base fica na meta tag `api-base-url`. A API permite `http://localhost:4173` por padrão; use `FRONTEND_ORIGIN` para outra origem. A conexão PostgreSQL usa `SUPABASE_DB_URL`, `SUPABASE_DB_USERNAME` e `SUPABASE_DB_PASSWORD`; não versionem credenciais.
 
 ## Regras decididas para os relatos
 
 - O reclamante informa título, descrição e local; a foto é opcional.
-- O reclamante informa um e-mail obrigatório para receber o protocolo e acompanhar a reclamação.
-- A consulta pela tela exige confirmar um código enviado para esse e-mail.
+- O reclamante informa um e-mail obrigatório, armazenado criptografado para possível contato futuro; a demonstração atual não envia mensagens.
+- Na demonstração escolar atual, a consulta exige o protocolo e usa o código compartilhado `xy1234XY`.
+- O código compartilhado não é apropriado para dados sensíveis nem para produção; um deploy real deve usar códigos únicos e verificação por e-mail.
 - O e-mail serve somente para acompanhamento e não pode ficar visível nem acessível à secretaria.
 - A equipe da secretaria precisa de login para acessar a fila.
 - A classificação e a prioridade sugeridas pela IA precisam de revisão humana.
 
-As regras acima não significam que todo o MVP esteja implementado. A abertura pela API real e o armazenamento privado do e-mail estão implementados; consulta por código, login da equipe, fila e IA real ainda não estão integrados ao back-end.
+As regras acima não significam que todo o MVP esteja implementado. A abertura pela API real, o armazenamento privado do e-mail e a consulta de demonstração por protocolo/código estão implementados; o envio de e-mail, login da equipe, fila e IA real ainda não estão integrados ao back-end.
 
-Não inventem autenticação, formato/expiração/reenvio de código, armazenamento de fotos ou regras de classificação e prioridade para o sistema real. O mock demonstra somente o fluxo visual: não envia e-mails ou fotos, não autentica a equipe e não usa IA real. Se forem necessárias regras reais ainda não decididas, perguntem à equipe antes de implementar.
+O código compartilhado é uma decisão exclusiva para a demonstração escolar. Não o use como autenticação para relatos reais ou dados sensíveis; uma versão de produção precisa de códigos únicos e envio por e-mail. O front-end não usa dados simulados: consulta de demonstração acessa o backend real, enquanto login da equipe e fila permanecem indisponíveis. O sistema ainda não envia e-mails ou fotos, não autentica a equipe e não usa IA real.
 
 ## Estado atual do front-end
 
@@ -49,11 +50,10 @@ A demonstração das telas está em:
 - `frontend/equipe-login.html`
 - `frontend/fila.html`
 - `frontend/styles.css`
-- `frontend/mock-api.js`
 - `frontend/app.js`
 - `frontend/assets/senac-logo-orange-blue.png`
 
-O protótipo permite criar um relato, consultar por protocolo e código fictício e revisar registros na fila. A fila exige um login de demonstração (`secretaria@demo.local` / `campus123`), mantido somente no `sessionStorage`; isso não é autenticação real e não protege dados. Os relatos ficam somente no `sessionStorage` do navegador; o código não é enviado por e-mail; fotos não são enviadas; as sugestões são fictícias e não são produzidas por IA. A integração do front-end com a API real ainda não foi implementada.
+O formulário principal envia relatos ao backend e mostra o protocolo retornado. O e-mail é persistido criptografado, mas não é enviado por e-mail. A tela Acompanhar consulta o status e a resposta da equipe usando o protocolo e o código compartilhado `xy1234XY`; esse fluxo é somente para demonstração. A autenticação e a fila da equipe ainda não estão disponíveis. O front-end não armazena relatos em `sessionStorage`, não simula credenciais e não apresenta registros fictícios.
 
 Para visualizar a tela, execute na raiz do repositório:
 
